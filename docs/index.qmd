@@ -1,5 +1,6 @@
 ---
 title: "R - Introduction"
+author: James Müller
 format:
   html: 
     page-layout: full
@@ -21,7 +22,7 @@ In order to get started with programming in R, you need to download the followin
 -   base-R from the R-project website, which installs R on your computer <https://stat.ethz.ch/CRAN/>
 -   RStudio, which, to date, is the best IDE for R coding, and hybrid R and Python coding <https://www.rstudio.com/products/rstudio/download/#download>
 
-You can simply run the installation process for R first, and then RStudio. Once you've installed both, you can launch RStudio and it should automatically detect the R installation and use it as an interpreter.
+You can simply run the installation process for R first, and then RStudio. Once you've installed both, you can launch RStudio and it should automatically detect your R installation and use it as the default interpreter.
 
 ## Literature
 
@@ -31,17 +32,19 @@ After being introduced to R, there are some useful books that can be read to exp
 -   Machine Learning with R by Brett Lantz
 -   An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani
 
-Hadley Wickham is one of the main contributors of one of some of the most used R-packages. Those main packages are grouped under the `tidyverse` package. The book is available on the following website for free: <https://r4ds.had.co.nz/>
+Hadley Wickham is the main contributor of some of the most used R-packages. Those packages were aggregated under a single umbrella package called the `tidyverse`. The book is available on the following website for free: <https://r4ds.had.co.nz/>. It goes much into depth than this introduction.
 
-Machine Learning with R should be somewhere in the Office and can be freely consulted at all times. It is a gentle introduction to machine learning with a crucial but very tightly written summary of the general statistics necessary for the understanding of those models. I recommend reading this whether or not you intend to create your own models, and before reading An Introduction to Statistical Learning.
+Machine Learning with R is a gentle introduction to machine learning with a crucial but very tightly written summary of the general statistics necessary for the understanding of those models. I recommend reading this whether or not you intend to create your own models, and before reading An Introduction to Statistical Learning.
 
-An Introduction to Statistical Learning more complete, but is slightly more advanced, despite the enticing title. The math level required to understand its content is ranked as modest by the author, but is substantially more stringent than the above two titles. A copy in .pdf format is available on the company's google drive in the onboarding folder.
+An Introduction to Statistical Learning more complete, but is slightly more advanced, despite the enticing title. The math level required to understand its content is ranked as modest by the author, but is substantially more stringent than the above two titles.
 
 ## R-Packages
 
-Like most surface languages, R has a base version. However, for many tasks, it is convenient and/or better to use a handful of packages. In some cases, such as the connection to an external database, it is necessary, since the base version of R does not provide that functionality.
+Like most surface languages, R has a base version, which in itself is powerful enough to do most tasks. However, one of the strengths of R is the variety and quality of the packages that are available. Package are extensions that sometimes improve and simplify base-R functions, or sometimes add some that are absent. A lost of the most used tidyverse functions are available in a different form in base-R, but are, at least in my opinion, not as user-friendly, intuitive, and perhaps most importantly, not as readable post-writing. 
 
-Here is a list of the packages you will use most at PrivateDeal:
+Conversely, there is no connector in base-R that allows for a connection to an enterprise database. In some cases, rather than importing .csv or .xlsx data, you need to directly pull data from a MySQL database. There are different packages that offer such functionality. Those will be covered towards the end of this guide.
+
+For now, here is a list of the packages you are very likely to use in any enterprise setting:
 
 -   `tidyverse`
 -   `lubridate`
@@ -59,21 +62,48 @@ There are of course many other packages that will be of great use to you, but th
 
 ## RStudio
 
+RStudio is a very powerful program, beyond editing standard r-scripts it helps you manage packages, provides you with an overview of your environment and all the plots your produce. It has a build in Viewer so that you are not forced to open a browser to view html content. Furthermore, it also allows for the creation of markdown files, shiny interactive apps, and more. You can also use other languages, such as SQL, Python, and many others. Most recently, the RStudio team has worked hard to create a framework enabling users to code in R and Python in a single script, enabling anyone to leverage the strengths of both languages.
+
+However, the goal of this guide is not to go over all of the functionalities of the RStudio IDE. Instead, we will briefly go through the base functions at your disposal to get you started with writing code in R. For anything beyond that, a quick Google search will likely answer most of your queries. 
+
 ### Console
 
-When you start RStudio, you will generally have three 'main' areas. In front of you on the left, the console. You can type commands in there directly, although that is not recommended.
+When you start RStudio for the first time, you will generally have three 'main' areas. In front of you on the left, the console:
+
+```{r, echo=FALSE, out.width="100%", fig.cap = "The RStudio Console"}
+knitr::include_graphics("images/r studio console.png")
+```
+
+The console will print the output of your commands. You can write all your code directly in there, but that would defeat the purpose of using RStudio. Instead, the standard method is to write a script and ran the commands within that script, the results of which will appear in the console.
+
+Beyond the console pane, you also have a 'Terminal' and 'Background Jobs' tab. The terminal allows you to open a standard terminal window. By default this is a cmd prompt for windows and a git bash prompt for mac and linux users. The background jobs tab will be covered at a later stage.
+
+
+### Enrionment
+
+At the top right of your screen, you have a box with the Environment tab:
+
+```{r, echo=FALSE, out.width="100%", fig.cap = "The RStudio Environment"}
+knitr::include_graphics("images/r studio environment.png")
+```
+
+This is were you can see all of the variables and objects you created, including vectors, dataframes, and functions. When you leave RStudio, you will be met with the option to save your session. This will preserve the objects that were stored in the environment during the session, at the expense of hard drive space on your computer.
+
+### Files and Viewer
+
+The tab on the bottom right is where you can navigate to different files in the current working directory, see which packages are available and loaded, and view interactive and static plots:
+
+```{r, echo=FALSE, out.width="100%", fig.cap = "The RStudio File an Plot Tab"}
+knitr::include_graphics("images/r studio console files and plots.png")
+```
 
 ### Scripts
 
 Instead of typing directly into the console, you should go to 'New File', located below the 'File' button, and create a new R script. You can then type in commands there and run them by highlighting the code and pressing Ctrl+Enter or using the 'Run' button. The advantage of having a script is that your code can be saved and used again, as opposed to typing it in directly everytime if you only used the console. There are many different types of scripts you can create, although those are not outlined in this version of the introduction.
 
-### Enrionment
-
-At the top right of your screen, you have a box with the Environment tab. This is were you can see all of the variables you created, including vectors, dataframes, and functions.
-
-### Files and Viewer
-
-Lastly, the tab on the bottom right is where you can navigate files, see which packages are available and loaded, and view interactive and static plots.
+```{r, echo=FALSE, out.width="100%", fig.cap = "RStudio Script"}
+knitr::include_graphics("images/r studio r script.png")
+```
 
 ## Installing and Loading Packages
 
@@ -132,7 +162,7 @@ You can choose any name you want for a variable, but it has to respect some rule
 3.  The variable cannot start with a number;
 4.  Variables are case sensitive, so it matters if you use a capital letter or not. For convenience, it is recommended not to user capital letters unless absolutely necessary when creating variables.
 
-### c() and =
+### 'c()' and '='
 
 When you create a vector containing multiple elements, you need to inform R you are doing so by wrapping the elements inside `c()`, and separating each element with a comma.
 
@@ -208,7 +238,7 @@ levels(gender)
 This section will outline the creation and overall purpose of dataframes. Dataframes allow for the aggregation of vectors with an added column name to each one. It essentially resembles a raw datasheet you would get in excel. Below is an illustration of the general structure a dataframe takes on. V1,V2,V3, and V4 are vectors similar to the ones we created above.
 
 ```{r, echo=FALSE, out.width="50%", fig.cap="DataFrame Illustration"}
-knitr::include_graphics("DataFrame.png")
+knitr::include_graphics("images/DataFrame.png")
 ```
 
 Base R has a number of functions to create and manipulate dataframes. However, I suggest you immediately get acquainted with and start using `tibbles`. Those are the `tidyverse` package version of dataframes. For more information on how they work and the advantages over a traditional R-base dataframe, please leaf through chapter 10 of the book.
@@ -236,10 +266,10 @@ You are, of course, not required to build all of your dataframes observation by 
 R-base already has a set of tools to import .csv files. However, you need to install a package if you want to read xl files in R. That package is aptly named `readxl`. You can then use the `read_excel` function to open a .xlsx file.
 
 ```{r}
-read.csv("example_1.csv")
+read.csv("data/example_1.csv")
 
 library(readxl)
-read_excel("example folder/example_1.xlsx")
+read_excel("data/example_1.xlsx")
 ```
 
 Opening a file is quite straightfoward. You specify the path in between quotation marks, and then end with the filename, a period, and the file extension. Different folders are separated with a forward slash, '/'. If you instaed choose to use a backslash, '\\', you need to use two to let R know that you're handling a special character outside of its intended purpose.
@@ -255,11 +285,11 @@ getwd()
 Additionally, you can change the working directory with the `setwd()` command. Inside you should include the path of the directory wrapped in quotation marks.
 
 ```{r}
-setwd("G:\\My Drive\\PrivateDeal Team\\Onboarding New employees")
+setwd("C:/Users/james/Documents/GitHub/Introduction-to-R")
 
 getwd()
 
-setwd("G:\\My Drive\\PrivateDeal Team\\Onboarding New employees\\Product Development - Data Analytics")
+setwd("C:/Users/james/Documents/GitHub/Introduction-to-R/docs")
 ```
 
 # Exploring a DataSet
@@ -426,7 +456,7 @@ Note that we do not use a single equal sign, but rather, a double equal sign. Th
 It is also possible to chain conditions. Use the '&' (and) sign for a joint set of conditions: Suppose that you want to see all petrol engine cars that were build after 2010:
 
 ```{r, echo=FALSE, out.width="50%", fig.cap="'And' filter"}
-knitr::include_graphics("joint filter.png")
+knitr::include_graphics("images/joint filter.png")
 ```
 
 ```{r}
@@ -438,7 +468,7 @@ subset %>%
 Alternatively, you can usethe '\|' (or) sign for an independent set of conditions.
 
 ```{r, echo=FALSE, out.width="50%", fig.cap="'Or' filter"}
-knitr::include_graphics("aggregate filter.png")
+knitr::include_graphics("images/aggregate filter.png")
 ```
 
 ```{r}
