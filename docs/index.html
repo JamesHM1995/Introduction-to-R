@@ -1,180 +1,1683 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Minimal Resume Template</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.640">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>R - Introduction</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+
 </head>
+
 <body>
 
-	<div class="container">
-		<div class="hero">
-			<h1 class="name"><strong>Abbie</strong> Bradley</h1>
-			<span class="job-title">Developer</span>
-			<span class="email">abbie.bradley@gmail.com</span>
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-full">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started"> <span class="header-section-number">1</span> Getting Started</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"> <span class="header-section-number">1.1</span> Introduction</a></li>
+  <li><a href="#literature" id="toc-literature" class="nav-link" data-scroll-target="#literature"> <span class="header-section-number">1.2</span> Literature</a></li>
+  <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages"> <span class="header-section-number">1.3</span> R-Packages</a></li>
+  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio"> <span class="header-section-number">1.4</span> RStudio</a>
+  <ul class="collapse">
+  <li><a href="#console" id="toc-console" class="nav-link" data-scroll-target="#console"> <span class="header-section-number">1.4.1</span> Console</a></li>
+  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts"> <span class="header-section-number">1.4.2</span> Scripts</a></li>
+  <li><a href="#enrionment" id="toc-enrionment" class="nav-link" data-scroll-target="#enrionment"> <span class="header-section-number">1.4.3</span> Enrionment</a></li>
+  <li><a href="#files-and-viewer" id="toc-files-and-viewer" class="nav-link" data-scroll-target="#files-and-viewer"> <span class="header-section-number">1.4.4</span> Files and Viewer</a></li>
+  </ul></li>
+  <li><a href="#installing-and-loading-packages" id="toc-installing-and-loading-packages" class="nav-link" data-scroll-target="#installing-and-loading-packages"> <span class="header-section-number">1.5</span> Installing and Loading Packages</a>
+  <ul class="collapse">
+  <li><a href="#package-installation" id="toc-package-installation" class="nav-link" data-scroll-target="#package-installation"> <span class="header-section-number">1.5.1</span> Package Installation</a></li>
+  <li><a href="#loading-packages" id="toc-loading-packages" class="nav-link" data-scroll-target="#loading-packages"> <span class="header-section-number">1.5.2</span> Loading Packages</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#understanding-data-structures-and-object-types" id="toc-understanding-data-structures-and-object-types" class="nav-link" data-scroll-target="#understanding-data-structures-and-object-types"> <span class="header-section-number">2</span> Understanding Data Structures and Object Types</a>
+  <ul class="collapse">
+  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types"> <span class="header-section-number">2.1</span> Data Types</a></li>
+  <li><a href="#creating-the-first-set-of-vectors" id="toc-creating-the-first-set-of-vectors" class="nav-link" data-scroll-target="#creating-the-first-set-of-vectors"> <span class="header-section-number">2.2</span> Creating the First set of Vectors</a>
+  <ul class="collapse">
+  <li><a href="#variable-naming" id="toc-variable-naming" class="nav-link" data-scroll-target="#variable-naming"> <span class="header-section-number">2.2.1</span> Variable Naming</a></li>
+  <li><a href="#c-and" id="toc-c-and" class="nav-link" data-scroll-target="#c-and"> <span class="header-section-number">2.2.2</span> c() and =</a></li>
+  <li><a href="#data-type-upon-creation-of-a-vector" id="toc-data-type-upon-creation-of-a-vector" class="nav-link" data-scroll-target="#data-type-upon-creation-of-a-vector"> <span class="header-section-number">2.2.3</span> Data Type upon Creation of a Vector</a></li>
+  </ul></li>
+  <li><a href="#dataframes" id="toc-dataframes" class="nav-link" data-scroll-target="#dataframes"> <span class="header-section-number">2.3</span> DataFrames</a></li>
+  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data"> <span class="header-section-number">2.4</span> Importing Data</a></li>
+  <li><a href="#working-directory" id="toc-working-directory" class="nav-link" data-scroll-target="#working-directory"> <span class="header-section-number">2.5</span> Working Directory</a></li>
+  </ul></li>
+  <li><a href="#exploring-a-dataset" id="toc-exploring-a-dataset" class="nav-link" data-scroll-target="#exploring-a-dataset"> <span class="header-section-number">3</span> Exploring a DataSet</a>
+  <ul class="collapse">
+  <li><a href="#loading-a-dataset-and-displaying-the-first-row-of-data" id="toc-loading-a-dataset-and-displaying-the-first-row-of-data" class="nav-link" data-scroll-target="#loading-a-dataset-and-displaying-the-first-row-of-data"> <span class="header-section-number">3.1</span> Loading a dataset and displaying the first row of data</a></li>
+  <li><a href="#skimr-and-data-exploration" id="toc-skimr-and-data-exploration" class="nav-link" data-scroll-target="#skimr-and-data-exploration"> <span class="header-section-number">3.2</span> Skimr and Data Exploration</a></li>
+  <li><a href="#commenting-code" id="toc-commenting-code" class="nav-link" data-scroll-target="#commenting-code"> <span class="header-section-number">3.3</span> Commenting Code</a></li>
+  </ul></li>
+  <li><a href="#using-the-tidyverse-to-manipulate-tibbles" id="toc-using-the-tidyverse-to-manipulate-tibbles" class="nav-link" data-scroll-target="#using-the-tidyverse-to-manipulate-tibbles"> <span class="header-section-number">4</span> Using the Tidyverse to Manipulate Tibbles</a>
+  <ul class="collapse">
+  <li><a href="#the-pipe-operator" id="toc-the-pipe-operator" class="nav-link" data-scroll-target="#the-pipe-operator"> <span class="header-section-number">4.1</span> The pipe operator ( %&gt;% )</a></li>
+  <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select"> <span class="header-section-number">4.2</span> select</a></li>
+  <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter"> <span class="header-section-number">4.3</span> filter</a></li>
+  <li><a href="#arrange" id="toc-arrange" class="nav-link" data-scroll-target="#arrange"> <span class="header-section-number">4.4</span> arrange</a></li>
+  <li><a href="#distinct" id="toc-distinct" class="nav-link" data-scroll-target="#distinct"> <span class="header-section-number">4.5</span> distinct</a></li>
+  <li><a href="#summarise" id="toc-summarise" class="nav-link" data-scroll-target="#summarise"> <span class="header-section-number">4.6</span> summarise</a></li>
+  <li><a href="#group_by" id="toc-group_by" class="nav-link" data-scroll-target="#group_by"> <span class="header-section-number">4.7</span> group_by</a></li>
+  <li><a href="#counttally" id="toc-counttally" class="nav-link" data-scroll-target="#counttally"> <span class="header-section-number">4.8</span> count/tally</a></li>
+  <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate"> <span class="header-section-number">4.9</span> mutate</a></li>
+  <li><a href="#rename" id="toc-rename" class="nav-link" data-scroll-target="#rename"> <span class="header-section-number">4.10</span> rename</a></li>
+  </ul></li>
+  <li><a href="#visualising-data-with-ggplot" id="toc-visualising-data-with-ggplot" class="nav-link" data-scroll-target="#visualising-data-with-ggplot"> <span class="header-section-number">5</span> Visualising Data with ggplot</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content column-page-left" id="quarto-document-content">
 
-			<h2 class="lead">Development and design of web applications 
-for startups and large companies</h2>
-		</div>
-	</div>
-
-<!-- Skills and intrest section -->
-	<div class="container">
-
-		<div class="sections">
-			<h2 class="section-title">Skills</h2>
-
-			<div class="list-card">
-				<span class="exp">+ 5 years</span>
-				<div>
-					<h3>Object programming & frameworks</h3>
-					<span>PHP, Symfony, Laravel, Silex, …</span>
-				</div>
-			</div>
-			
-			<div class="list-card">
-				<span class="exp">+ 3 years</span>
-				<div>
-					<h3>Design integration</h3>
-					<span>Style and tools, JS Frameworks</span>
-				</div>
-			</div>	
-					
-			<div class="list-card">
-				<span class="exp">+ 6 years</span>
-				<div>
-					<h3>Linux</h3>
-					<span>Scripting, Servers management and protocols, Automation</span>
-				</div>
-			</div>
-
-
-		</div>
-		<div class="sections">
-				<h2 class="section-title">Interests</h2>
-				
-				<div class="list-card">
-					<div>
-						<h3>Scripting languages</h3>
-						<span>PHP, JS, Bash, Python</span>
-					</div>
-				</div>	
-
-				<div class="list-card">
-					<div>
-						<h3>Hacking</h3>
-						<span>Linux, Crawlers, Bots, Network</span>
-					</div>
-				</div>		
-		</div>
-	</div>
-
-	<!-- Achievements -->
-
-	<div class="container cards">
-		
-		<div class="card">
-			<div class="skill-level">
-				<span>+</span>
-				<h2>60</h2>
-			</div>
-
-			<div class="skill-meta">
-				<h3>Projects</h3>
-				<span>Adapting and creating solutions for customer's needs</span>
-			</div>
-		</div>
-
-			
-		<div class="card">
-			<div class="skill-level">
-				<h2>50</h2>
-				<span>%</span>
-			</div>
-
-			<div class="skill-meta">
-				<h3>Web</h3>
-				<span>Applications development integrating third-party services and mobile client(s)</span>
-			</div>
-		</div>
-
-			
-		<div class="card">
-			<div class="skill-level">
-				<h2>30</h2>
-				<span>%</span>
-			</div>
-
-			<div class="skill-meta">
-				<h3>Technical solutions</h3>
-				<span>Such as web services, scripts, configurations</span>
-			</div>
-		</div>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R - Introduction</h1>
+</div>
 
 
-		<div class="card">
-			<div class="skill-level">
-				<h2>20</h2>
-				<span>%</span>
-			</div>
 
-			<div class="skill-meta">
-				<h3>Leading</h3>
-				<span>Web projects and ensure the quality of delivery</span>
-			</div>
-		</div>
+<div class="quarto-title-meta">
 
-	</div>
+    
+    
+  </div>
+  
 
-	<!-- Timeeline -->
+</header>
 
-	<div class="container">
-		<ol class="timeline">
-		  <li>
-		    <p class="line">Experiences</p>
-		    <span class="point"></span>
-		    <p class="description">
-		      Lead Developer @Geronimo
-		    </p>
-		    <span class="date">Today - Apr. 2016</span>
-		  </li>
+<section id="getting-started" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Getting Started</h1>
+<section id="introduction" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1.1</span> Introduction</h2>
+<p>In order to get started with programming in R, you need to download the following tools:</p>
+<ul>
+<li>base-R from the R-project website, which installs R on your computer <a href="https://stat.ethz.ch/CRAN/" class="uri">https://stat.ethz.ch/CRAN/</a></li>
+<li>RStudio, which, to date, is the best IDE for R coding, and hybrid R and Python coding <a href="https://www.rstudio.com/products/rstudio/download/#download" class="uri">https://www.rstudio.com/products/rstudio/download/#download</a></li>
+</ul>
+<p>You can simply run the installation process for R first, and then RStudio. Once you’ve installed both, you can launch RStudio and it should automatically detect the R installation and use it as an interpreter.</p>
+</section>
+<section id="literature" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="literature"><span class="header-section-number">1.2</span> Literature</h2>
+<p>After being introduced to R, there are some useful books that can be read to expand on your knowledge:</p>
+<ul>
+<li>R for Data Science by Hadley Wickham &amp; Garrett Grolemund</li>
+<li>Machine Learning with R by Brett Lantz</li>
+<li>An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani</li>
+</ul>
+<p>Hadley Wickham is one of the main contributors of one of some of the most used R-packages. Those main packages are grouped under the <code>tidyverse</code> package. The book is available on the following website for free: <a href="https://r4ds.had.co.nz/" class="uri">https://r4ds.had.co.nz/</a></p>
+<p>Machine Learning with R should be somewhere in the Office and can be freely consulted at all times. It is a gentle introduction to machine learning with a crucial but very tightly written summary of the general statistics necessary for the understanding of those models. I recommend reading this whether or not you intend to create your own models, and before reading An Introduction to Statistical Learning.</p>
+<p>An Introduction to Statistical Learning more complete, but is slightly more advanced, despite the enticing title. The math level required to understand its content is ranked as modest by the author, but is substantially more stringent than the above two titles. A copy in .pdf format is available on the company’s google drive in the onboarding folder.</p>
+</section>
+<section id="r-packages" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="r-packages"><span class="header-section-number">1.3</span> R-Packages</h2>
+<p>Like most surface languages, R has a base version. However, for many tasks, it is convenient and/or better to use a handful of packages. In some cases, such as the connection to an external database, it is necessary, since the base version of R does not provide that functionality.</p>
+<p>Here is a list of the packages you will use most at PrivateDeal:</p>
+<ul>
+<li><code>tidyverse</code></li>
+<li><code>lubridate</code></li>
+<li><code>RMariaDB</code></li>
+</ul>
+<p>The following sections of this document will expand on the base usage of each of those packages.</p>
+<p>The <code>tidyverse</code> is a collection of packages that integrate together to help enhance your coding experience by providing a set of convenient features. Those features include the usage of pipes to chain commands, as well as the usage of a set of key function derived from the <code>SQL</code> language. Additionally, it also contains the <code>ggplot2</code> visual library, which will be the main method by which you provide visualisations to the rest of the team.</p>
+<p>The <code>lubridate</code> package provides a whole panel of options to work with date-objects, such as the ability to measure the a time-difference with many units, or the ability to retrieve day-names from a date.</p>
+<p>The <code>RMariaDB</code> package provides a connector through which various databases can be accessed directly in R. This allows the user to connect at the beginning of a script and then pull data in real time directly from a MySQL database.</p>
+<p>There are of course many other packages that will be of great use to you, but those are optional, whereas those listed above are mandatory.</p>
+</section>
+<section id="rstudio" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="rstudio"><span class="header-section-number">1.4</span> RStudio</h2>
+<section id="console" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="console"><span class="header-section-number">1.4.1</span> Console</h3>
+<p>When you start RStudio, you will generally have three ‘main’ areas. In front of you on the left, the console. You can type commands in there directly, although that is not recommended.</p>
+</section>
+<section id="scripts" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="scripts"><span class="header-section-number">1.4.2</span> Scripts</h3>
+<p>Instead of typing directly into the console, you should go to ‘New File’, located below the ‘File’ button, and create a new R script. You can then type in commands there and run them by highlighting the code and pressing Ctrl+Enter or using the ‘Run’ button. The advantage of having a script is that your code can be saved and used again, as opposed to typing it in directly everytime if you only used the console. There are many different types of scripts you can create, although those are not outlined in this version of the introduction.</p>
+</section>
+<section id="enrionment" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="enrionment"><span class="header-section-number">1.4.3</span> Enrionment</h3>
+<p>At the top right of your screen, you have a box with the Environment tab. This is were you can see all of the variables you created, including vectors, dataframes, and functions.</p>
+</section>
+<section id="files-and-viewer" class="level3" data-number="1.4.4">
+<h3 data-number="1.4.4" class="anchored" data-anchor-id="files-and-viewer"><span class="header-section-number">1.4.4</span> Files and Viewer</h3>
+<p>Lastly, the tab on the bottom right is where you can navigate files, see which packages are available and loaded, and view interactive and static plots.</p>
+</section>
+</section>
+<section id="installing-and-loading-packages" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="installing-and-loading-packages"><span class="header-section-number">1.5</span> Installing and Loading Packages</h2>
+<section id="package-installation" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="package-installation"><span class="header-section-number">1.5.1</span> Package Installation</h3>
+<p>There are two ways to install packages in R. You can either use RStudio’s visual interface to navigate to ‘Tools &gt; Install Packages…’ and type the name of the package you want to install. The packages should be installed from CRAN (default) into the library specified by default. You may change that path if necessary. Lastly, the ‘install dependencies’ box should be ticked. This makes sure that packages necessary to the functioning of the main package are also installed.</p>
+<p>The second option you have is to type <code>install.packages()</code> and insert the name of the package you want to install. Note that it has to be wrapped into apostrophes or quotation marks. If you want to install more than one package at a time, you should use the <code>c()</code> notation, indicating that there are multiple elements. Here is an example on how to install the three packages listed above: <code>install.packages(c('tidyverse','lubridate','RMariaDB'))</code></p>
+</section>
+<section id="loading-packages" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="loading-packages"><span class="header-section-number">1.5.2</span> Loading Packages</h3>
+<p>Once those packages are installed, you need to load them. You’ll have to do this every time you start a new R session, so I advise you to have the loading process for each package you use at the top of each script. In order to load a package, use the <code>library()</code> command and insert the package name. Unlike the `install.packages’ function, you can only load one package at a time. However, since the package is being loaded from the global environment, you do not have to wrap it in quotation marks.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.2.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+✔ tibble  3.1.7     ✔ dplyr   1.0.9
+✔ tidyr   1.2.0     ✔ stringr 1.4.0
+✔ readr   2.1.2     ✔ forcats 0.5.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.2.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'lubridate'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
 
-		  <li>
-		    <span class="point"></span>
-		    <p class="description">
-		      Freelance
-		    </p>
-		    <span class="date">Apr. 2016 - Sep. 2015</span>
-		  </li>
+    date, intersect, setdiff, union</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMariaDB)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>As you can see from the output, the <code>tidyverse</code> package contains and loads many packages at the same time. We will cover the some of the content of the other warning messages later in the documentation.</p>
+</section>
+</section>
+</section>
+<section id="understanding-data-structures-and-object-types" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Understanding Data Structures and Object Types</h1>
+<section id="data-types" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="data-types"><span class="header-section-number">2.1</span> Data Types</h2>
+<p>We will now look at a few practical examples to get started. Before we create some vectors to start the ball rolling, we need to look at some of the data types in R:</p>
+<ul>
+<li>character
+<ul>
+<li>character data is usually a set of strings, such as words, or the combination of words and numbers</li>
+</ul></li>
+<li>numeric
+<ul>
+<li>numeric data can take on any real number, decimal or otherwise</li>
+</ul></li>
+<li>integer
+<ul>
+<li>self-explanatory, only contains integer numbers</li>
+</ul></li>
+<li>factor
+<ul>
+<li>factors regroup all categorical variables. Those usually have levels. For example, if you have a gender vector containing ‘Male’ and ‘Female’, it is a categorical variable with two levels: ‘Male’ and ‘Female’.</li>
+</ul></li>
+<li>logical
+<ul>
+<li>logical data is a subset of factor data. It is categorized as either TRUE or FALSE.</li>
+</ul></li>
+</ul>
+</section>
+<section id="creating-the-first-set-of-vectors" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="creating-the-first-set-of-vectors"><span class="header-section-number">2.2</span> Creating the First set of Vectors</h2>
+<p>Now that you have a better understanding of the different data types, lets create a set of two vectors. The first one will be a character vector containing the names ‘Janice’, ‘John’, and ‘Patricia’. We will call this vector ‘names’. The second will be a set of integers listing their ages: 15, 27, and 56, respectively. We will call it age.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>names <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'Janice'</span>,<span class="st">'John'</span>,<span class="st">'Patricia'</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">27</span>,<span class="dv">56</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Lets first comment on the structure used to create each of those vectors.</p>
+<section id="variable-naming" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="variable-naming"><span class="header-section-number">2.2.1</span> Variable Naming</h3>
+<p>You can choose any name you want for a variable, but it has to respect some rules:</p>
+<ol type="1">
+<li>You cannot use spaces in the name of the variable. So ‘user names’ would not work. Instead the two words should be linked by an underscore: ‘user_names’. Alternatively you could use a period as the separator;</li>
+<li>Variables cannot have special characters;</li>
+<li>The variable cannot start with a number;</li>
+<li>Variables are case sensitive, so it matters if you use a capital letter or not. For convenience, it is recommended not to user capital letters unless absolutely necessary when creating variables.</li>
+</ol>
+</section>
+<section id="c-and" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="c-and"><span class="header-section-number">2.2.2</span> c() and =</h3>
+<p>When you create a vector containing multiple elements, you need to inform R you are doing so by wrapping the elements inside <code>c()</code>, and separating each element with a comma.</p>
+<p>The equal operator indicates the creation of an object. Alternatively, and arrow can be used: ‘&lt;-’. Note that the object is created in the direction of the arrow. If you did ‘-&gt;’ the object would be stored on the right and your code for the creation would have to be on the left.</p>
+</section>
+<section id="data-type-upon-creation-of-a-vector" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="data-type-upon-creation-of-a-vector"><span class="header-section-number">2.2.3</span> Data Type upon Creation of a Vector</h3>
+<p>In the example above, the names are wrapped in apostrophes, whereas the numerical values are not. Anything other than numerical values needs to be wrapped either between apostrophes or quotation marks. Otherwise R will look for a variable inside the environment instead of creating new values. Let’s look at an example:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>names <span class="ot">=</span> <span class="fu">c</span>(names, <span class="st">'Blaire'</span>,<span class="st">'Daniel'</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Janice"   "John"     "Patricia" "Blaire"   "Daniel"  </code></pre>
+</div>
+</div>
+<p>As you can see, R retrieves the ‘names’ variable from the environment and adds it to the ‘names_new’ variable. You can then add data of the same type to the vector. The old ‘names’ vector has now been replaced with a new one containing five observations.</p>
+<p>The age vector only contains numerical values, so its elements should not be wrapped between apostrophes. What would happen if we did that? We use the <code>class</code> function to look at the data-type of the vector:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'15'</span>,<span class="st">'27'</span>,<span class="st">'56'</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+<p>As you can see, the resulting vector is now a character vector. We could fix this by creating the vector anew. However, lets convert is using the <code>as.numeric</code> function and add two new age values.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">as.numeric</span>(age), <span class="dv">45</span>,<span class="dv">33</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>age <span class="co"># printing the age values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15 27 56 45 33</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(age) <span class="co"># returning the type of data in the vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+</div>
+<p>Now that you are more familiar with the creation of vector and with the methods to coerce the data type you need, lets create a categorical vector containing genders.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'Female'</span>,<span class="st">'Male'</span>,<span class="st">'Female'</span>,<span class="st">'Female'</span>,<span class="st">'Male'</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Female" "Male"   "Female" "Female" "Male"  </code></pre>
+</div>
+</div>
+<p>As you can see, R has treated our categorical vector as a character vector. This is because we did not wrap it:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">'Female'</span>,<span class="st">'Male'</span>,<span class="st">'Female'</span>,<span class="st">'Female'</span>,<span class="st">'Male'</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "factor"</code></pre>
+</div>
+</div>
+<p>Because gender is a categorical vector, you can retrieve the levels which R automatically assigned:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Female" "Male"  </code></pre>
+</div>
+</div>
+<p>One last thing that is important about categorical vectors is that they can be ordered. From the output above, you can see that the order is Female and then Male. Suppose that you would want it the other way around, you can either specify the order upon creation, or subsequently reorder the vector.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">'Female'</span>,<span class="st">'Male'</span>,<span class="st">'Female'</span>,<span class="st">'Female'</span>,<span class="st">'Male'</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'Male'</span>,<span class="st">'Female'</span>))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Male"   "Female"</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">=</span> <span class="fu">factor</span>(gender, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'Female'</span>,<span class="st">'Male'</span>))</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Female" "Male"  </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="dataframes" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="dataframes"><span class="header-section-number">2.3</span> DataFrames</h2>
+<p>This section will outline the creation and overall purpose of dataframes. Dataframes allow for the aggregation of vectors with an added column name to each one. It essentially resembles a raw datasheet you would get in excel. Below is an illustration of the general structure a dataframe takes on. V1,V2,V3, and V4 are vectors similar to the ones we created above.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="DataFrame.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">DataFrame Illustration</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Base R has a number of functions to create and manipulate dataframes. However, I suggest you immediately get acquainted with and start using <code>tibbles</code>. Those are the <code>tidyverse</code> package version of dataframes. For more information on how they work and the advantages over a traditional R-base dataframe, please leaf through chapter 10 of the book.</p>
+<p>Let’s create a small tibble (dataframe), which we’ll call ‘df’, with the three vectors we created so far.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">tibble</span>(<span class="st">'name'</span> <span class="ot">=</span> names,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>       <span class="st">'age'</span> <span class="ot">=</span> age,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">'gender'</span> <span class="ot">=</span> gender)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  name       age gender
+  &lt;chr&gt;    &lt;dbl&gt; &lt;fct&gt; 
+1 Janice      15 Female
+2 John        27 Male  
+3 Patricia    56 Female
+4 Blaire      45 Female
+5 Daniel      33 Male  </code></pre>
+</div>
+</div>
+<p>First, we load the tidyverse package (if that hasn’t been done for this R-session yet). Then we call the object we’re creating ‘df’. The <code>tibble()</code> function requires you to list all the vectors you want in the tibble. You first give a column name in between apostrophes, then use the equal sign to signal what will be associated to that column name. Lastly, you need to specify which vector is going to be associated to each column name. You need to separate each column you create with a comma.</p>
+<p>Note that now, each vector we had is a column in the dataframe, with the data points associated with one another. Between the column names and the values of the vectors, there are abbreviations indicating the data type of each column. You can see that the dataframe preserves the data types associated with each original vector.</p>
+</section>
+<section id="importing-data" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="importing-data"><span class="header-section-number">2.4</span> Importing Data</h2>
+<p>You are, of course, not required to build all of your dataframes observation by observation. You can import data into R from many different sources. Later in the document we will look at how to connect to a database directly, but for now we’ll just go through the basics, such as loading a .csv or .xlsx file. Those are, in any case, the most common types of files you’ll be loading.</p>
+<p>R-base already has a set of tools to import .csv files. However, you need to install a package if you want to read xl files in R. That package is aptly named <code>readxl</code>. You can then use the <code>read_excel</code> function to open a .xlsx file.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">"example_1.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Names Age Gender
+1   Janice  15 Female
+2    John   27   Male
+3 Patricia  56 Female
+4   Blaire  45 Female
+5   Daniel  33   Male</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">"example folder/example_1.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  Names      Age Gender
+  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; 
+1 Janice      15 Female
+2 John        27 Male  
+3 Patricia    56 Female
+4 Blaire      45 Female
+5 Daniel      33 Male  </code></pre>
+</div>
+</div>
+<p>Opening a file is quite straightfoward. You specify the path in between quotation marks, and then end with the filename, a period, and the file extension. Different folders are separated with a forward slash, ‘/’. If you instaed choose to use a backslash, ‘\’, you need to use two to let R know that you’re handling a special character outside of its intended purpose.</p>
+</section>
+<section id="working-directory" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="working-directory"><span class="header-section-number">2.5</span> Working Directory</h2>
+<p>Lastly, in the example above, only the filename, or the last folder in which the file is contained are listed in the file path. This is because R uses a working directory system. You can list the path directly starting in the current working directory, or the full path if your file is contained outside of your working directory. In case you’re unsure what you current working directory is, you can find out:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/james/Documents/GitHub/Introduction-to-R/docs"</code></pre>
+</div>
+</div>
+<p>Additionally, you can change the working directory with the <code>setwd()</code> command. Inside you should include the path of the directory wrapped in quotation marks.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"G:</span><span class="sc">\\</span><span class="st">My Drive</span><span class="sc">\\</span><span class="st">PrivateDeal Team</span><span class="sc">\\</span><span class="st">Onboarding New employees"</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "G:/My Drive/PrivateDeal Team/Onboarding New employees"</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"G:</span><span class="sc">\\</span><span class="st">My Drive</span><span class="sc">\\</span><span class="st">PrivateDeal Team</span><span class="sc">\\</span><span class="st">Onboarding New employees</span><span class="sc">\\</span><span class="st">Product Development - Data Analytics"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="exploring-a-dataset" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Exploring a DataSet</h1>
+<section id="loading-a-dataset-and-displaying-the-first-row-of-data" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="loading-a-dataset-and-displaying-the-first-row-of-data"><span class="header-section-number">3.1</span> Loading a dataset and displaying the first row of data</h2>
+<p>Now that you have a fundamental understanding of tibbles and how to import datasets in R, let’s open the ‘Used-Car Data’ dataset. You can get it here by creating a free account on kaggle: <a href="https://www.kaggle.com/datasets/shubham1kumar/usedcar-data?select=UserCarData.csv" class="uri">https://www.kaggle.com/datasets/shubham1kumar/usedcar-data?select=UserCarData.csv</a> You can also find the dataset in the Onboarding folder on the PrivateDeal Google Drive. We load the dataset using the <code>read.csv</code> function, and then use <code>head(, n = 1)</code> to display the first row of data.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>usedcars <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"G:</span><span class="sc">\\</span><span class="st">My Drive</span><span class="sc">\\</span><span class="st">PrivateDeal Team</span><span class="sc">\\</span><span class="st">Onboarding New employees</span><span class="sc">\\</span><span class="st">Product Development - Data Analytics</span><span class="sc">\\</span><span class="st">UsedCarData.csv"</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(usedcars, <span class="at">n =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sales_ID   name year selling_price km_driven Region    State.or.Province
+1        1 Maruti 2014        450000    145500   East District of Columbia
+        City   fuel seller_type transmission       owner mileage engine
+1 Washington Diesel  Individual       Manual First_Owner    23.4   1248
+  max_power         torque seats sold
+1        74 190Nm@ 2000rpm     5    Y</code></pre>
+</div>
+</div>
+<p>Using head works well when a dataset just contains a few variables. However, you can see from the output above that this isn’t the easiest way to obtain a readable output.</p>
+</section>
+<section id="skimr-and-data-exploration" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="skimr-and-data-exploration"><span class="header-section-number">3.2</span> Skimr and Data Exploration</h2>
+<p>We will therefore use a package that helps with data exploration. That packages is called <code>skimr</code>. You can install it using the <code>install.packages</code> function, and then load it with <code>library</code>. Once you’re done doing that, you can use the <code>skim</code> function on the data, which is saved in the global environment as ‘trains’.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(usedcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">usedcars</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">7906</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: character</strong></p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 13%">
+<col style="width: 18%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 11%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">empty</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: right;">whitespace</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">name</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Region</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">State.or.Province</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">City</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1310</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">fuel</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">seller_type</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">transmission</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">owner</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">torque</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">441</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sold</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 9%">
+<col style="width: 12%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sales_ID</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4070.11</td>
+<td style="text-align: right;">2345.77</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2037.25</td>
+<td style="text-align: right;">4076.5</td>
+<td style="text-align: right;">6102.00</td>
+<td style="text-align: right;">8128</td>
+<td style="text-align: left;">▇▇▇▇▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">year</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2013.98</td>
+<td style="text-align: right;">3.86</td>
+<td style="text-align: right;">1994.0</td>
+<td style="text-align: right;">2012.00</td>
+<td style="text-align: right;">2015.0</td>
+<td style="text-align: right;">2017.00</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: left;">▁▁▂▆▇</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">selling_price</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">649813.72</td>
+<td style="text-align: right;">813582.75</td>
+<td style="text-align: right;">29999.0</td>
+<td style="text-align: right;">270000.00</td>
+<td style="text-align: right;">450000.0</td>
+<td style="text-align: right;">690000.00</td>
+<td style="text-align: right;">10000000</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">km_driven</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">69188.66</td>
+<td style="text-align: right;">56792.30</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">35000.00</td>
+<td style="text-align: right;">60000.0</td>
+<td style="text-align: right;">95425.00</td>
+<td style="text-align: right;">2360457</td>
+<td style="text-align: left;">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">mileage</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">19.42</td>
+<td style="text-align: right;">4.04</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">16.78</td>
+<td style="text-align: right;">19.3</td>
+<td style="text-align: right;">22.32</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: left;">▁▃▇▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">engine</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1458.71</td>
+<td style="text-align: right;">503.89</td>
+<td style="text-align: right;">624.0</td>
+<td style="text-align: right;">1197.00</td>
+<td style="text-align: right;">1248.0</td>
+<td style="text-align: right;">1582.00</td>
+<td style="text-align: right;">3604</td>
+<td style="text-align: left;">▇▇▂▂▁</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">max_power</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">91.59</td>
+<td style="text-align: right;">35.75</td>
+<td style="text-align: right;">32.8</td>
+<td style="text-align: right;">68.05</td>
+<td style="text-align: right;">82.0</td>
+<td style="text-align: right;">102.00</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: left;">▇▂▁▁▁</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">seats</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5.42</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">▁▇▂▁▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>This structure should be clearer to interpret. You obtain the dimensions of the data, how frequent each data type is, and you get summary statistics by data type. One of the strengths of the <code>skim</code> function is how well it highlights missing data. At a glance, you can see from the complete_rate column in the output that the dataset contains no missing observations.</p>
+</section>
+<section id="commenting-code" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="commenting-code"><span class="header-section-number">3.3</span> Commenting Code</h2>
+<p>In this last subsection relating to exploratory analysis, we will remark on a general principle: annotating code. At first, this will seem tedious and unecessary. However, there are three reasons to do this religiously:</p>
+<ul>
+<li>Interpreting unfamiliar code</li>
+<li>Resuming work on an old script</li>
+<li>Continuity and Teamwork</li>
+</ul>
+<p>The first reason has to do with the learning curve in R. You will initially have to deal with many functions until you can comfortably open, reshape, and analyse data. Where a certain piece of code or function might seem clear and easy to memorize at first, it is very easy to forget how to replicate it, or just find it in a script. With proper annotation that problem should be mostly eliminated.</p>
+<p>The second reason pertains to the number of scripts you will eventually have. It is not unlikely to have one left idle for months. It is then not necessarily obvious what was being done, to what end, and using which tools.</p>
+<p>Lastly, you are likely to work in a team. As soon as that is the case, annotating code will save you the time to explain every chunk of code to your colleagues. It also makes it easier for someone to pick up one of your scripts from GitHub without requiring more information than what is containing in the readme file.</p>
+</section>
+</section>
+<section id="using-the-tidyverse-to-manipulate-tibbles" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Using the Tidyverse to Manipulate Tibbles</h1>
+<p>This section will look at the key functions provided by the tidyverse to transform tibbles.</p>
+<p>You will be able to do most of your work using only a select number of commands.</p>
+<p><strong>Selecting and Arranging Data</strong></p>
+<ul>
+<li><code>select</code> Subset column using their name and types</li>
+<li><code>filter</code> Subset rows using column values</li>
+<li><code>arrange</code> Arrange rows by column values</li>
+<li><code>distinct</code> Subset distinct/unique rows</li>
+</ul>
+<p><strong>Grouping</strong></p>
+<ul>
+<li><code>groupby</code> Group data by column</li>
+</ul>
+<p><strong>Aggregating Data</strong></p>
+<ul>
+<li><code>summarise</code> Summarise each group to fewer rows</li>
+<li><code>count</code>/<code>tally</code> Count observations by group</li>
+</ul>
+<p><strong>Transforming Columns or Values</strong></p>
+<ul>
+<li><code>mutate</code> Create, modify, and delete columns</li>
+<li><code>rename</code> Rename columns</li>
+</ul>
+<p>Throughout this section we will use the <code>usedcars</code> dataset that we loaded earlier.</p>
+<section id="the-pipe-operator" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="the-pipe-operator"><span class="header-section-number">4.1</span> The pipe operator ( %&gt;% )</h2>
+<p>Before we get started with the list of functions highlighted above, one more tool is be necessary: the pipe operator (%&gt;%). Most function in R require that you wrap at least two arguments: the dataset you are using and the nature or the transformation you are doing.</p>
+<p>Let’s use the <code>colnames</code> function with a pipe. Much like with <code>head</code> you would usually wrap the function around the dataframe. However, using the pipe operator we can do the following:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that you might have to load the tidyverse package if you have not already done so for your active R-session</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>usedcars <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Sales_ID"          "name"              "year"             
+ [4] "selling_price"     "km_driven"         "Region"           
+ [7] "State.or.Province" "City"              "fuel"             
+[10] "seller_type"       "transmission"      "owner"            
+[13] "mileage"           "engine"            "max_power"        
+[16] "torque"            "seats"             "sold"             </code></pre>
+</div>
+</div>
+<p>As you can see, we start by writing the data source, followed by the pipe operator (%&gt;%), and wrap the second argument inside the function. You can use Ctrl+Shift+m to call the pipe operator. Where the advantages might not seem immediately obvious, they will appear clearly as the volume of the code in your script increases.</p>
+<p>However, I will point out my personal reason for using this structure where possible:</p>
+<ul>
+<li>Clearer Identification:
+<ul>
+<li>which dataset is being used;</li>
+<li>which function is being called;</li>
+<li>where the dataset argument is as opposed to the specific function arguments (e.g.&nbsp;when using head(), separates the data from the n = 1 argument)</li>
+</ul></li>
+<li>Code readability for others
+<ul>
+<li>makes it easier for outside readers to review and edit your code</li>
+</ul></li>
+</ul>
+</section>
+<section id="select" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="select"><span class="header-section-number">4.2</span> select</h2>
+<p>Suppose we want to view a subset of the data with a smaller number of columns that are of interest to us. We could decide to select the ‘Sales_ID’, ‘name’, ‘year’, and ‘seats’ column. To achieve that, we use the <code>select</code> function:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>usedcars <span class="sc">%&gt;%</span> </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">'Sales_ID'</span>, <span class="st">'name'</span>,<span class="st">'year'</span>,<span class="st">'seats'</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">2</span>) <span class="co"># Here I limit the output to 2 rows to avoid clogging the document with necessary data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sales_ID   name year seats
+1        1 Maruti 2014     5
+2        2  Skoda 2014     5</code></pre>
+</div>
+</div>
+<p>You could of course store the output in another object by doing ‘object_name’ = ‘code_above’.</p>
+<p>You can also use select to remove some columns from analysis by adding a minus sign in front of <code>c()</code></p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>usedcars <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="st">'name'</span>,<span class="st">'year'</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sales_ID selling_price km_driven Region    State.or.Province          City
+1        1        450000    145500   East District of Columbia    Washington
+2        2        370000    120000   East             New York New York City
+    fuel seller_type transmission        owner mileage engine max_power
+1 Diesel  Individual       Manual  First_Owner   23.40   1248     74.00
+2 Diesel  Individual       Manual Second_Owner   21.14   1498    103.52
+               torque seats sold
+1      190Nm@ 2000rpm     5    Y
+2 250Nm@ 1500-2500rpm     5    Y</code></pre>
+</div>
+</div>
+<p>You can see from the output that the ‘name’ and ‘year’ columns have now been removed. Instead of using columns names, it is also possible to refer to columns by id, using their position in the dataframe. For example we could elect to only keep the first 7 columns:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>usedcars <span class="sc">%&gt;%</span> </span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sales_ID   name year selling_price km_driven Region    State.or.Province
+1        1 Maruti 2014        450000    145500   East District of Columbia
+2        2  Skoda 2014        370000    120000   East             New York</code></pre>
+</div>
+</div>
+<p>You can apply this method to select or remove any column from the data:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>usedcars <span class="sc">%&gt;%</span> </span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">13</span><span class="sc">:</span><span class="dv">15</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sales_ID km_driven seller_type        owner mileage engine max_power
+1        1    145500  Individual  First_Owner   23.40   1248     74.00
+2        2    120000  Individual Second_Owner   21.14   1498    103.52</code></pre>
+</div>
+</div>
+<p><strong>Exercise</strong></p>
+<p>For further analysis, we can create a subset of this data with fewer columns. Choose the shortest method to keep the following columns in a subset called subset: * Sales_ID * year * fuel * selling_price * km_driven * Region</p>
+<p>Once you’ve tried you can look at the solution here:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>subset <span class="ot">=</span> usedcars <span class="sc">%&gt;%</span> </span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">'Sales_ID'</span>,<span class="st">'year'</span>,<span class="st">'fuel'</span>,<span class="st">'selling_price'</span>,<span class="st">'km_driven'</span>,<span class="st">'Region'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="filter" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="filter"><span class="header-section-number">4.3</span> filter</h2>
+<p>Now that you’re familiar with the select function, we can move on to filtering data. The <code>filter</code> function allows us to keep rows in the data that meet one or more conditions. Suppose we would like to only keep entries for cars built in 1996. The <code>filter</code> function requires two arguments beyong the dataset: the column to filter from and the condition(s):</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1996</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sales_ID year   fuel selling_price km_driven Region
+1     4109 1996 Petrol         40000     32000   West
+2     6934 1996 Petrol         42000     70000  South</code></pre>
+</div>
+</div>
+<p>You can use any of the following operators in this function:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th style="text-align: left;">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>==</td>
+<td style="text-align: left;">equal to</td>
+</tr>
+<tr class="even">
+<td>!=</td>
+<td style="text-align: left;">not equal to</td>
+</tr>
+<tr class="odd">
+<td>&lt;</td>
+<td style="text-align: left;">smaller than</td>
+</tr>
+<tr class="even">
+<td>&gt;</td>
+<td style="text-align: left;">greater than</td>
+</tr>
+<tr class="odd">
+<td>&gt;=</td>
+<td style="text-align: left;">smaller than or equal to</td>
+</tr>
+<tr class="even">
+<td>=&gt;</td>
+<td style="text-align: left;">greater than or equal to</td>
+</tr>
+</tbody>
+</table>
+<p>Note that we do not use a single equal sign, but rather, a double equal sign. This is because we do not assume a match, we simply ask R whether there’s a possibility for a match, and if so, to return the datapoint(s) where that is the case.</p>
+<p>It is also possible to chain conditions. Use the ‘&amp;’ (and) sign for a joint set of conditions: Suppose that you want to see all petrol engine cars that were build after 2010:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="joint%20filter.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">‘And’ filter</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;</span> <span class="dv">2010</span> <span class="sc">&amp;</span> fuel <span class="sc">==</span> <span class="st">'Petrol'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sales_ID year   fuel selling_price km_driven Region
+1        6 2017 Petrol        440000     45000   East
+2       16 2016 Petrol        400000     40000   East
+3       25 2018 Petrol        500000     35000   East</code></pre>
+</div>
+</div>
+<p>Alternatively, you can usethe ‘|’ (or) sign for an independent set of conditions.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="aggregate%20filter.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">‘Or’ filter</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;</span> <span class="dv">2010</span> <span class="sc">|</span> fuel <span class="sc">==</span> <span class="st">'Petrol'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sales_ID year   fuel selling_price km_driven  Region
+1        1 2014 Diesel        450000    145500    East
+2        2 2014 Diesel        370000    120000    East
+3        3 2006 Petrol        158000    140000 Central</code></pre>
+</div>
+</div>
+</section>
+<section id="arrange" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="arrange"><span class="header-section-number">4.4</span> arrange</h2>
+<p>Sometimes, the sequential order of data matters. In those cases, you might want to arrange it in a particular order before grouping and/or summarising. Our subset dataset should be arranged already by default using the first column: ‘Sales_ID’. We could instead prefer to have it ordered by year:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Sales_ID year   fuel selling_price km_driven  Region
+1      1475 1994 Petrol         45000     60000    East
+2      4713 1994 Diesel         99000    100000   South
+3      3891 1995 Petrol         55000     70000 Central
+4      4109 1996 Petrol         40000     32000    West
+5      6934 1996 Petrol         42000     70000   South
+6      2425 1997 Petrol         60000     25000    West
+7      5412 1997 Petrol         50000    110000    West
+8      5703 1997 Petrol         70000    100000   South
+9      5715 1997 Petrol         29999     80000 Central
+10     5727 1997 Petrol        125000     94000 Central</code></pre>
+</div>
+</div>
+<p>You can see from the output above that the data is now organised by year, which are in sequential order, whereas the ‘Sales_ID’ values are mixed up. It is also possible to specify the direction of order:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(year)) <span class="sc">%&gt;%</span> </span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sales_ID year   fuel selling_price km_driven  Region
+1      107 2020 Petrol        400000      5000 Central
+2      116 2020 Petrol        475000     13000    East
+3      197 2020 Petrol        720000      5000   South
+4      225 2020 Petrol        524000     32000   South
+5      403 2020    CNG        409999     35000 Central</code></pre>
+</div>
+</div>
+<p>The data now starts with the most recent observation.</p>
+<p>In some instances, you might want to sort the data based on more than one column. To do so, you can list any number of columns. By default, those will be sorted in ascending order. However, you can specify the direction for each column. We could want to view to data from most the most recent car to the oldest, but sort each year value based on the selling price in ascending order:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(year),selling_price) <span class="sc">%&gt;%</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sales_ID year   fuel selling_price km_driven  Region
+1     2326 2020 Petrol        250000    120000 Central
+2     3672 2020 Petrol        250999     30000    West
+3     6677 2020 Diesel        260000     50000    West
+4     6422 2020 Petrol        265000     70000 Central
+5     2656 2020 Petrol        330000     70000 Central</code></pre>
+</div>
+</div>
+</section>
+<section id="distinct" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="distinct"><span class="header-section-number">4.5</span> distinct</h2>
+<p>Sometimes you need to explore how many unique values you have in a dataframe. Where the <code>count</code> and <code>tally</code> functions will be more handy when it comes to simply count or assess how many unique observations of each type you have, the <code>distinct</code> function allows you to get rid of duplicates in your data. Let’s assume you suspect that there might be more than one ‘Sales_ID’. Since it is the primary key for the table this should not be the case. However, there are sometimes errors when recording data into a database, resulting in duplicate entries where there should only be unique entries. We will therefore check the length of the data as it is by using the <code>dim</code> function:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7906    6</code></pre>
+</div>
+</div>
+<p>We have 7906 observations. Now let’s apply the <code>distinct</code> function to the ‘Sales_ID’ column, followed by the <code>dim</code> function:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(Sales_ID) <span class="sc">%&gt;%</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7906    1</code></pre>
+</div>
+</div>
+<p>As you can see, we get the same number of rows: 7906. This means that there are no duplicates.</p>
+<p>Suppose you want to use the <code>distinct</code> function to extract the number of unique years present in the data. You could do the following:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span> <span class="co"># Arrange the column by year in ascending order</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">4</span>) <span class="co"># Only display the first 4 observations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  year
+1 1994
+2 1995
+3 1996
+4 1997</code></pre>
+</div>
+</div>
+<p>The distinct function returns all the unique year values as a dataframe with a single column. Only the four first observations are displayed here because we used the <code>head</code> function.</p>
+<p>In some cases, you will want to extract unique values of a column but preserve the dataframe. Since this example set only has unique primary key values, it is not necessary. However, we will still look at an example where you would like to keep unique ‘km_driven’ values, and preserve the other columns. We would need to add the <code>.keep_all</code> argument and set it equal to <code>TRUE</code>. Note that by default it is set to false, and that there needs to be a period preceding the argument:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(km_driven, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sales_ID year   fuel selling_price km_driven  Region
+1        1 2014 Diesel        450000    145500    East
+2        2 2014 Diesel        370000    120000    East
+3        3 2006 Petrol        158000    140000 Central
+4        4 2010 Diesel        225000    127000 Central</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(km_driven, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dim</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 898   6</code></pre>
+</div>
+</div>
+<p>You can see from the dimension of the new dataset that the columns have all been preserved (6), but the number of obsevations has been reduced to 898 down from 7906.</p>
+</section>
+<section id="summarise" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="summarise"><span class="header-section-number">4.6</span> summarise</h2>
+<p>The summarise function allows you to perform aggregate operations, such as summing, descriptive statics (e.g.&nbsp;mean, median, etc.), and variant-wise counting. We start by looking at the base-R version of doing things. Looking back into our ‘subset’ dataframe, we can calculate the mean selling_price for the whole dataset:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(subset<span class="sc">$</span>selling_price)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 649813.7</code></pre>
+</div>
+</div>
+<p>This is the base-R notation, where the dataframe goes inside the function, and you specify the column by naming it preceded by a dollar sign. The <code>mean</code> function is not a <code>tidyverse</code> function. It will also transform your data completely, rather than just re-arranging the dataframe. It can therefore not be called directly after a pipe. You can try this by entering the following code: <code>subset %&gt;% mean(selling_price)</code>. You’ll get a warning and it will return an empty value.</p>
+<p>what you should do instead is pass the <code>mean</code> function inside the <code>summarise</code> function as follows:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(selling_price))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mean(selling_price)
+1            649813.7</code></pre>
+</div>
+</div>
+<p>Note that with the method above the resulting column will have a very inconvenient name: ‘mean(selling_price)’. You could instead name the column as follows:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_price =</span> <span class="fu">mean</span>(selling_price))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mean_price
+1   649813.7</code></pre>
+</div>
+</div>
+<p>Any aggregation function can be passed inside of the <code>summarise</code> function:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_price =</span> <span class="fu">sum</span>(selling_price))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  total_price
+1  5137427277</code></pre>
+</div>
+</div>
+<p>You can also perform multiple simultaneous operations inside the <code>summarise</code> function:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_price =</span> <span class="fu">mean</span>(selling_price),</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">total_price =</span> <span class="fu">sum</span>(selling_price))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mean_price total_price
+1   649813.7  5137427277</code></pre>
+</div>
+</div>
+</section>
+<section id="group_by" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="group_by"><span class="header-section-number">4.7</span> group_by</h2>
+<p>Now that you have seen how the <code>summarise</code> function works, we can properly introduce the <code>group_by</code> function. Going back to the example we used above, where we calculated the mean selling price of the whole dataset, we could need a more precise average. Suppose you want the average for each year in the whole dataset. This is where the <code>group_by</code> function comes into play. You simply need to choose the grouping argument, the year in this case, and then follow with the <code>summarise</code> function, exactly as we did above:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span> </span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_price_year =</span> <span class="fu">mean</span>(selling_price)) <span class="sc">%&gt;%</span> </span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+   year mean_price_year
+  &lt;int&gt;           &lt;dbl&gt;
+1  1994           72000
+2  1995           55000
+3  1996           41000
+4  1997           86111</code></pre>
+</div>
+</div>
+<p>The output is a dataframe listing the mean selling price for each year. The <code>group_by</code> function is possibly the most important tidyverse function, since it allows you to run all of your transformations on a subset of observations.</p>
+<p>You can of course have more than one grouping variable. Suppose you want the same output as above, but with more granularity, such that you would know the mean selling price by year for each fuel type:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(fuel, year) <span class="sc">%&gt;%</span></span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_price_year_eng =</span> <span class="fu">mean</span>(selling_price)) <span class="sc">%&gt;%</span> </span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'fuel'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+# Groups:   fuel [2]
+  fuel    year mean_price_year_eng
+  &lt;chr&gt;  &lt;int&gt;               &lt;dbl&gt;
+1 Diesel  1994              99000 
+2 Petrol  1994              45000 
+3 Petrol  1995              55000 
+4 Petrol  1996              41000 
+5 Petrol  1997              86111 
+6 Petrol  1998              57889.</code></pre>
+</div>
+</div>
+<p>Now for each fuel type, you have the mean selling price by year. Much like the summarise example above, you could also do multiple summarising operations in a single transformation. Note that <code>group_by</code> is a persistent function. Sometimes your might want to perform multiple operations in a row that require different grouping sequences. In such cases the data will remain grouped unless otherwise specified. It is therefore good practise that if you intend on using the output for anything else than storage of visualisation, you should <code>ungroup</code> the data:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(fuel, year) <span class="sc">%&gt;%</span></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_price_year_fuel =</span> <span class="fu">mean</span>(selling_price)) <span class="sc">%&gt;%</span> </span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'fuel'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  fuel    year mean_price_year_fuel
+  &lt;chr&gt;  &lt;int&gt;                &lt;dbl&gt;
+1 Diesel  1994                99000</code></pre>
+</div>
+</div>
+</section>
+<section id="counttally" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="counttally"><span class="header-section-number">4.8</span> count/tally</h2>
+<p>The <code>count</code> function is a self-contained summarising function that counts all the unique observations in a dataframe colum. It returns a column containing the unique observation names, and the number of occurences of each one in the data. Suppose we want to know which types of fuel are in the data, and how many times they occur, we can simply call our dataframe, and pass the ‘fuel’ column into the <code>count</code> function:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(fuel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    fuel    n
+1    CNG   52
+2 Diesel 4299
+3    LPG   35
+4 Petrol 3520</code></pre>
+</div>
+</div>
+<p>You can see that the resulting dataframe has 4 rows, indicating that there are 4 different types of fuel, and the “n” value indicates the number of occurences for each type. You can make the output more tidy by adding two arguments to the <code>count</code> function. The first one is the name of the count column, which is determined by ‘name =’. The second one is the order in which the data is displayed. The usual way would be to add the <code>arrange</code> function and chain it with a pipe. However, the <code>count</code> function has a built in argument to arrange the result in descending order. You can pass the ‘sort = TRUE’ argument:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(fuel, <span class="at">sort =</span> <span class="cn">TRUE</span>, <span class="at">name =</span> <span class="st">'observation_count'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    fuel observation_count
+1 Diesel              4299
+2 Petrol              3520
+3    CNG                52
+4    LPG                35</code></pre>
+</div>
+</div>
+<p>You can use count with more than one grouping variable, however, it is rather inefficient because you have to go through the process of naming each column. Instead, if you’re looking to count observations based on two or more grouping variables, I recommend using <code>group_by</code> with &nbsp;. Let’s suppose that you would like to count the number of observations for each fuel type and Region combinations:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(fuel, Region) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tally</span>(<span class="at">name =</span> <span class="st">"observation_count"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(observation_count)) <span class="sc">%&gt;%</span> </span>
+<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+# Groups:   fuel [2]
+  fuel   Region  observation_count
+  &lt;chr&gt;  &lt;chr&gt;               &lt;int&gt;
+1 Diesel Central              1328
+2 Diesel West                 1048
+3 Diesel East                 1031
+4 Petrol Central              1021</code></pre>
+</div>
+</div>
+<p>As you can see, the grouping variables are passed into the <code>group_by</code> function, whereas the count is performed by the <code>tally</code> function. Within <code>tally</code> you can also immediately rename the count column, and using prior knowledge from the <code>arrange</code> function to sort the output.</p>
+</section>
+<section id="mutate" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="mutate"><span class="header-section-number">4.9</span> mutate</h2>
+<p>The <code>mutate</code> function allows its user to create or transform dataframe columns. It performs simultaneous column-wise operations. It is also usually restricted to per-column operations, although some of the variations of the functions allow for applications on multiple columns in the data.</p>
+<p>Let’s return to our subset dataframe and perform some changes to it. The ‘km_driven’ values are given in kms, as indicated by the column name. However, we could want to reduced the volume of the column by displaying that data in thousands of kms:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>subset <span class="ot">=</span> subset <span class="sc">%&gt;%</span> </span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">thousand_km_driven =</span> km_driven <span class="sc">/</span> <span class="dv">1000</span>)</span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-4"><a href="#cb101-4" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span></span>
+<span id="cb101-5"><a href="#cb101-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sales_ID year   fuel selling_price km_driven  Region thousand_km_driven
+1        1 2014 Diesel        450000    145500    East              145.5
+2        2 2014 Diesel        370000    120000    East              120.0
+3        3 2006 Petrol        158000    140000 Central              140.0</code></pre>
+</div>
+</div>
+<p>The <code>mutate</code> function can be applied to do various types of transformations. Numeric columns can be combined through any standard mathematical operators. Be cautious when naming the new column generated. If that column already exists if will replace the existing one. Let’s illustrate this by multiplying our new column values by 0, and give the output column the same name:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">thousand_km_driven =</span> thousand_km_driven <span class="sc">*</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sales_ID year   fuel selling_price km_driven  Region thousand_km_driven
+1        1 2014 Diesel        450000    145500    East                  0
+2        2 2014 Diesel        370000    120000    East                  0
+3        3 2006 Petrol        158000    140000 Central                  0</code></pre>
+</div>
+</div>
+</section>
+<section id="rename" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="rename"><span class="header-section-number">4.10</span> rename</h2>
+<p>The <code>rename</code> is a simplified version of mutate that only allows the user to rename one or more columns. From the above examples, if you wanted to change the ‘Region’ column name to remove the capital ‘R’. You could of course use <code>mutate</code> and delete the old column with <code>select</code>:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">region =</span> Region) <span class="sc">%&gt;%</span></span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Region) <span class="sc">%&gt;%</span></span>
+<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sales_ID year   fuel selling_price km_driven thousand_km_driven region
+1        1 2014 Diesel        450000    145500              145.5   East</code></pre>
+</div>
+</div>
+<p>This has the following downsides:</p>
+<ul>
+<li>requires two different lines of code</li>
+<li>moves the renamed column to the last position in the dataframe unless otherwise specified</li>
+<li>computationally slower</li>
+</ul>
+<p>Instead of using <code>mutate</code>, you can do the same as above without displacing the ‘Region’ column by using <code>rename</code>. The arguments are ‘new name’ equals ‘old name’:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">region =</span> Region)<span class="sc">%&gt;%</span></span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sales_ID year   fuel selling_price km_driven region thousand_km_driven
+1        1 2014 Diesel        450000    145500   East              145.5</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="visualising-data-with-ggplot" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Visualising Data with ggplot</h1>
+<p>Once you have gone through the most important tidyverse functions, you should be comfortable enough with data manipulation to create your first set of graphs. R-base has a visualisation library built-in. Suppose you would like to view the relationship between the selling_price and km_driven from our earlier subset.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(subset<span class="sc">$</span>km_driven, subset<span class="sc">$</span>selling_price)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The creation of a plot is quite straightforward with this library. However, I tend to use <code>ggplot2</code> for almost all my analysis. The same plot can be done with that library (which is loaded automatically with the tidyverse package):</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(km_driven, selling_price)) <span class="sc">+</span></span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Voilà! Let’s look at the differences. It is clear that the code to obtain such a plot is shorter and faster to write in the base visualisation library. However, it is less ‘tidy’. The <code>ggplot2</code> code is easier to read. The data used is clearly stated, the columns are on a different line, and you can see the type of plot that is requested.</p>
+<p>Generally, `<code>ggplot2</code> plots look slightly worse in their base form, but with a bit of customization, they look much more pristine than their base-R counterparts. However, one of the biggest advantages in my opinion is the ability to chain data with pipes. This essentially means that you can run transformations and are not required to store them in the global environment. We’ll briefly illustrate this. Let us suppose we only want to visualise the above relationship for cars sold in the ‘East’ region. With base-R plots we would do the following:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>subset_east <span class="ot">=</span> subset <span class="sc">%&gt;%</span> </span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Region <span class="sc">==</span> <span class="st">'East'</span>)</span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(subset_east<span class="sc">$</span>km_driven, subset_east<span class="sc">$</span>selling_price)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-52-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The <code>ggplot2</code> equivalent would require the following code:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Region <span class="sc">==</span> <span class="st">'East'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(km_driven, selling_price)) <span class="sc">+</span></span>
+<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-53-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In the second scenario, we are not forced to store the subset of our subset dataframe to produce the plot. This is handy when you want to apply a transformation only for the purpose of a single visualisation.</p>
+</section>
 
-		  		  <li>
-		    <p class="line">Education</p>
-		    <span class="point"></span>
-		    <p class="description">
-		      DUT "Métiers du multimédia et de l'internet"
-		    </p>
-		    <span class="date">2015 - 2013</span>
-		  </li>
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
 
-		  		  <li>
-		    <span class="point"></span>
-		    <p class="description">
-		      Art & Design studies
-		    </p>
-		    <span class="date">2013 - 2008</span>
-		  </li>
-		</ol>
-
-	</div>
 
 
-	<br><br>
-
-
-	<footer class="container">
-		<span style="font-size: 16px; margin-top: ">Coded by <a href="https://newtodesign.com/">New to design </a> Designed by <a href="https://dribbble.com/shots/4342703-Minimal-resume-freebie-for-junior-self-taught-people">Nicolas Meuzard</a></span>
-	</footer>
-
-
-</body>
-</html>
+</body></html>

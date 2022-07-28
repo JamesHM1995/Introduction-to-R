@@ -1,0 +1,708 @@
+---
+title: "R - Introduction"
+format:
+  html: 
+    page-layout: full
+    toc: true
+    number-sections: true
+    theme: sandstone
+    monobackgroundcolor: bg-secondary
+    code-fold: true
+    code-summary: "Show the code"
+editor: visual
+---
+
+# Getting Started
+
+## Introduction
+
+In order to get started with programming in R, you need to download the following tools:
+
+-   base-R from the R-project website, which installs R on your computer <https://stat.ethz.ch/CRAN/>
+-   RStudio, which, to date, is the best IDE for R coding, and hybrid R and Python coding <https://www.rstudio.com/products/rstudio/download/#download>
+
+You can simply run the installation process for R first, and then RStudio. Once you've installed both, you can launch RStudio and it should automatically detect the R installation and use it as an interpreter.
+
+## Literature
+
+After being introduced to R, there are some useful books that can be read to expand on your knowledge:
+
+-   R for Data Science by Hadley Wickham & Garrett Grolemund
+-   Machine Learning with R by Brett Lantz
+-   An Introduction to Statistical Learning by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani
+
+Hadley Wickham is one of the main contributors of one of some of the most used R-packages. Those main packages are grouped under the `tidyverse` package. The book is available on the following website for free: <https://r4ds.had.co.nz/>
+
+Machine Learning with R should be somewhere in the Office and can be freely consulted at all times. It is a gentle introduction to machine learning with a crucial but very tightly written summary of the general statistics necessary for the understanding of those models. I recommend reading this whether or not you intend to create your own models, and before reading An Introduction to Statistical Learning.
+
+An Introduction to Statistical Learning more complete, but is slightly more advanced, despite the enticing title. The math level required to understand its content is ranked as modest by the author, but is substantially more stringent than the above two titles. A copy in .pdf format is available on the company's google drive in the onboarding folder.
+
+## R-Packages
+
+Like most surface languages, R has a base version. However, for many tasks, it is convenient and/or better to use a handful of packages. In some cases, such as the connection to an external database, it is necessary, since the base version of R does not provide that functionality.
+
+Here is a list of the packages you will use most at PrivateDeal:
+
+-   `tidyverse`
+-   `lubridate`
+-   `RMariaDB`
+
+The following sections of this document will expand on the base usage of each of those packages.
+
+The `tidyverse` is a collection of packages that integrate together to help enhance your coding experience by providing a set of convenient features. Those features include the usage of pipes to chain commands, as well as the usage of a set of key function derived from the `SQL` language. Additionally, it also contains the `ggplot2` visual library, which will be the main method by which you provide visualisations to the rest of the team.
+
+The `lubridate` package provides a whole panel of options to work with date-objects, such as the ability to measure the a time-difference with many units, or the ability to retrieve day-names from a date.
+
+The `RMariaDB` package provides a connector through which various databases can be accessed directly in R. This allows the user to connect at the beginning of a script and then pull data in real time directly from a MySQL database.
+
+There are of course many other packages that will be of great use to you, but those are optional, whereas those listed above are mandatory.
+
+## RStudio
+
+### Console
+
+When you start RStudio, you will generally have three 'main' areas. In front of you on the left, the console. You can type commands in there directly, although that is not recommended.
+
+### Scripts
+
+Instead of typing directly into the console, you should go to 'New File', located below the 'File' button, and create a new R script. You can then type in commands there and run them by highlighting the code and pressing Ctrl+Enter or using the 'Run' button. The advantage of having a script is that your code can be saved and used again, as opposed to typing it in directly everytime if you only used the console. There are many different types of scripts you can create, although those are not outlined in this version of the introduction.
+
+### Enrionment
+
+At the top right of your screen, you have a box with the Environment tab. This is were you can see all of the variables you created, including vectors, dataframes, and functions.
+
+### Files and Viewer
+
+Lastly, the tab on the bottom right is where you can navigate files, see which packages are available and loaded, and view interactive and static plots.
+
+## Installing and Loading Packages
+
+### Package Installation
+
+There are two ways to install packages in R. You can either use RStudio's visual interface to navigate to 'Tools \> Install Packages...' and type the name of the package you want to install. The packages should be installed from CRAN (default) into the library specified by default. You may change that path if necessary. Lastly, the 'install dependencies' box should be ticked. This makes sure that packages necessary to the functioning of the main package are also installed.
+
+The second option you have is to type `install.packages()` and insert the name of the package you want to install. Note that it has to be wrapped into apostrophes or quotation marks. If you want to install more than one package at a time, you should use the `c()` notation, indicating that there are multiple elements. Here is an example on how to install the three packages listed above: `install.packages(c('tidyverse','lubridate','RMariaDB'))`
+
+### Loading Packages
+
+Once those packages are installed, you need to load them. You'll have to do this every time you start a new R session, so I advise you to have the loading process for each package you use at the top of each script. In order to load a package, use the `library()` command and insert the package name. Unlike the \`install.packages' function, you can only load one package at a time. However, since the package is being loaded from the global environment, you do not have to wrap it in quotation marks.
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(RMariaDB)
+```
+
+As you can see from the output, the `tidyverse` package contains and loads many packages at the same time. We will cover the some of the content of the other warning messages later in the documentation.
+
+# Understanding Data Structures and Object Types
+
+## Data Types
+
+We will now look at a few practical examples to get started. Before we create some vectors to start the ball rolling, we need to look at some of the data types in R:
+
+-   character
+    -   character data is usually a set of strings, such as words, or the combination of words and numbers
+-   numeric
+    -   numeric data can take on any real number, decimal or otherwise
+-   integer
+    -   self-explanatory, only contains integer numbers
+-   factor
+    -   factors regroup all categorical variables. Those usually have levels. For example, if you have a gender vector containing 'Male' and 'Female', it is a categorical variable with two levels: 'Male' and 'Female'.
+-   logical
+    -   logical data is a subset of factor data. It is categorized as either TRUE or FALSE.
+
+## Creating the First set of Vectors
+
+Now that you have a better understanding of the different data types, lets create a set of two vectors. The first one will be a character vector containing the names 'Janice', 'John', and 'Patricia'. We will call this vector 'names'. The second will be a set of integers listing their ages: 15, 27, and 56, respectively. We will call it age.
+
+```{r}
+names = c('Janice','John','Patricia')
+age = c(15,27,56)
+```
+
+Lets first comment on the structure used to create each of those vectors.
+
+### Variable Naming
+
+You can choose any name you want for a variable, but it has to respect some rules:
+
+1.  You cannot use spaces in the name of the variable. So 'user names' would not work. Instead the two words should be linked by an underscore: 'user_names'. Alternatively you could use a period as the separator;
+2.  Variables cannot have special characters;
+3.  The variable cannot start with a number;
+4.  Variables are case sensitive, so it matters if you use a capital letter or not. For convenience, it is recommended not to user capital letters unless absolutely necessary when creating variables.
+
+### c() and =
+
+When you create a vector containing multiple elements, you need to inform R you are doing so by wrapping the elements inside `c()`, and separating each element with a comma.
+
+The equal operator indicates the creation of an object. Alternatively, and arrow can be used: '\<-'. Note that the object is created in the direction of the arrow. If you did '-\>' the object would be stored on the right and your code for the creation would have to be on the left.
+
+### Data Type upon Creation of a Vector
+
+In the example above, the names are wrapped in apostrophes, whereas the numerical values are not. Anything other than numerical values needs to be wrapped either between apostrophes or quotation marks. Otherwise R will look for a variable inside the environment instead of creating new values. Let's look at an example:
+
+```{r}
+names = c(names, 'Blaire','Daniel')
+
+names
+```
+
+As you can see, R retrieves the 'names' variable from the environment and adds it to the 'names_new' variable. You can then add data of the same type to the vector. The old 'names' vector has now been replaced with a new one containing five observations.
+
+The age vector only contains numerical values, so its elements should not be wrapped between apostrophes. What would happen if we did that? We use the `class` function to look at the data-type of the vector:
+
+```{r}
+age = c('15','27','56')
+
+class(age)
+```
+
+As you can see, the resulting vector is now a character vector. We could fix this by creating the vector anew. However, lets convert is using the `as.numeric` function and add two new age values.
+
+```{r}
+age = c(as.numeric(age), 45,33)
+
+age # printing the age values
+
+class(age) # returning the type of data in the vector
+```
+
+Now that you are more familiar with the creation of vector and with the methods to coerce the data type you need, lets create a categorical vector containing genders.
+
+```{r}
+gender = c('Female','Male','Female','Female','Male')
+
+(gender)
+```
+
+As you can see, R has treated our categorical vector as a character vector. This is because we did not wrap it:
+
+```{r}
+gender = factor(c('Female','Male','Female','Female','Male'))
+
+class(gender)
+```
+
+Because gender is a categorical vector, you can retrieve the levels which R automatically assigned:
+
+```{r}
+levels(gender)
+```
+
+One last thing that is important about categorical vectors is that they can be ordered. From the output above, you can see that the order is Female and then Male. Suppose that you would want it the other way around, you can either specify the order upon creation, or subsequently reorder the vector.
+
+```{r}
+gender = factor(c('Female','Male','Female','Female','Male'), levels = c('Male','Female'))
+
+levels(gender)
+
+gender = factor(gender, levels = c('Female','Male'))
+
+levels(gender)
+
+```
+
+## DataFrames
+
+This section will outline the creation and overall purpose of dataframes. Dataframes allow for the aggregation of vectors with an added column name to each one. It essentially resembles a raw datasheet you would get in excel. Below is an illustration of the general structure a dataframe takes on. V1,V2,V3, and V4 are vectors similar to the ones we created above.
+
+```{r, echo=FALSE, out.width="50%", fig.cap="DataFrame Illustration"}
+knitr::include_graphics("DataFrame.png")
+```
+
+Base R has a number of functions to create and manipulate dataframes. However, I suggest you immediately get acquainted with and start using `tibbles`. Those are the `tidyverse` package version of dataframes. For more information on how they work and the advantages over a traditional R-base dataframe, please leaf through chapter 10 of the book.
+
+Let's create a small tibble (dataframe), which we'll call 'df', with the three vectors we created so far.
+
+```{r}
+library(tidyverse)
+
+df = tibble('name' = names,
+       'age' = age,
+       'gender' = gender)
+
+print(df)
+```
+
+First, we load the tidyverse package (if that hasn't been done for this R-session yet). Then we call the object we're creating 'df'. The `tibble()` function requires you to list all the vectors you want in the tibble. You first give a column name in between apostrophes, then use the equal sign to signal what will be associated to that column name. Lastly, you need to specify which vector is going to be associated to each column name. You need to separate each column you create with a comma.
+
+Note that now, each vector we had is a column in the dataframe, with the data points associated with one another. Between the column names and the values of the vectors, there are abbreviations indicating the data type of each column. You can see that the dataframe preserves the data types associated with each original vector.
+
+## Importing Data
+
+You are, of course, not required to build all of your dataframes observation by observation. You can import data into R from many different sources. Later in the document we will look at how to connect to a database directly, but for now we'll just go through the basics, such as loading a .csv or .xlsx file. Those are, in any case, the most common types of files you'll be loading.
+
+R-base already has a set of tools to import .csv files. However, you need to install a package if you want to read xl files in R. That package is aptly named `readxl`. You can then use the `read_excel` function to open a .xlsx file.
+
+```{r}
+read.csv("example_1.csv")
+
+library(readxl)
+read_excel("example folder/example_1.xlsx")
+```
+
+Opening a file is quite straightfoward. You specify the path in between quotation marks, and then end with the filename, a period, and the file extension. Different folders are separated with a forward slash, '/'. If you instaed choose to use a backslash, '\\', you need to use two to let R know that you're handling a special character outside of its intended purpose.
+
+## Working Directory
+
+Lastly, in the example above, only the filename, or the last folder in which the file is contained are listed in the file path. This is because R uses a working directory system. You can list the path directly starting in the current working directory, or the full path if your file is contained outside of your working directory. In case you're unsure what you current working directory is, you can find out:
+
+```{r}
+getwd()
+```
+
+Additionally, you can change the working directory with the `setwd()` command. Inside you should include the path of the directory wrapped in quotation marks.
+
+```{r}
+setwd("G:\\My Drive\\PrivateDeal Team\\Onboarding New employees")
+
+getwd()
+
+setwd("G:\\My Drive\\PrivateDeal Team\\Onboarding New employees\\Product Development - Data Analytics")
+```
+
+# Exploring a DataSet
+
+## Loading a dataset and displaying the first row of data
+
+Now that you have a fundamental understanding of tibbles and how to import datasets in R, let's open the 'Used-Car Data' dataset. You can get it here by creating a free account on kaggle: <https://www.kaggle.com/datasets/shubham1kumar/usedcar-data?select=UserCarData.csv> You can also find the dataset in the Onboarding folder on the PrivateDeal Google Drive. We load the dataset using the `read.csv` function, and then use `head(, n = 1)` to display the first row of data.
+
+```{R}
+usedcars <- read.csv("G:\\My Drive\\PrivateDeal Team\\Onboarding New employees\\Product Development - Data Analytics\\UsedCarData.csv")
+
+head(usedcars, n = 1)
+```
+
+Using head works well when a dataset just contains a few variables. However, you can see from the output above that this isn't the easiest way to obtain a readable output.
+
+## Skimr and Data Exploration
+
+We will therefore use a package that helps with data exploration. That packages is called `skimr`. You can install it using the `install.packages` function, and then load it with `library`. Once you're done doing that, you can use the `skim` function on the data, which is saved in the global environment as 'trains'.
+
+```{r, warning = FALSE}
+library(skimr)
+
+skim(usedcars)
+```
+
+This structure should be clearer to interpret. You obtain the dimensions of the data, how frequent each data type is, and you get summary statistics by data type. One of the strengths of the `skim` function is how well it highlights missing data. At a glance, you can see from the complete_rate column in the output that the dataset contains no missing observations.
+
+## Commenting Code
+
+In this last subsection relating to exploratory analysis, we will remark on a general principle: annotating code. At first, this will seem tedious and unecessary. However, there are three reasons to do this religiously:
+
+-   Interpreting unfamiliar code
+-   Resuming work on an old script
+-   Continuity and Teamwork
+
+The first reason has to do with the learning curve in R. You will initially have to deal with many functions until you can comfortably open, reshape, and analyse data. Where a certain piece of code or function might seem clear and easy to memorize at first, it is very easy to forget how to replicate it, or just find it in a script. With proper annotation that problem should be mostly eliminated.
+
+The second reason pertains to the number of scripts you will eventually have. It is not unlikely to have one left idle for months. It is then not necessarily obvious what was being done, to what end, and using which tools.
+
+Lastly, you are likely to work in a team. As soon as that is the case, annotating code will save you the time to explain every chunk of code to your colleagues. It also makes it easier for someone to pick up one of your scripts from GitHub without requiring more information than what is containing in the readme file.
+
+# Using the Tidyverse to Manipulate Tibbles
+
+This section will look at the key functions provided by the tidyverse to transform tibbles.
+
+You will be able to do most of your work using only a select number of commands.
+
+**Selecting and Arranging Data**
+
+-   `select` Subset column using their name and types
+-   `filter` Subset rows using column values
+-   `arrange` Arrange rows by column values
+-   `distinct` Subset distinct/unique rows
+
+**Grouping**
+
+-   `groupby` Group data by column
+
+**Aggregating Data**
+
+-   `summarise` Summarise each group to fewer rows
+-   `count`/`tally` Count observations by group
+
+**Transforming Columns or Values**
+
+-   `mutate` Create, modify, and delete columns
+-   `rename` Rename columns
+
+Throughout this section we will use the `usedcars` dataset that we loaded earlier.
+
+## The pipe operator ( %\>% )
+
+Before we get started with the list of functions highlighted above, one more tool is be necessary: the pipe operator (%\>%). Most function in R require that you wrap at least two arguments: the dataset you are using and the nature or the transformation you are doing.
+
+Let's use the `colnames` function with a pipe. Much like with `head` you would usually wrap the function around the dataframe. However, using the pipe operator we can do the following:
+
+```{r}
+# Note that you might have to load the tidyverse package if you have not already done so for your active R-session
+usedcars %>%
+  colnames()
+```
+
+As you can see, we start by writing the data source, followed by the pipe operator (%\>%), and wrap the second argument inside the function. You can use Ctrl+Shift+m to call the pipe operator. Where the advantages might not seem immediately obvious, they will appear clearly as the volume of the code in your script increases.
+
+However, I will point out my personal reason for using this structure where possible:
+
+-   Clearer Identification:
+    -   which dataset is being used;
+    -   which function is being called;
+    -   where the dataset argument is as opposed to the specific function arguments (e.g. when using head(), separates the data from the n = 1 argument)
+-   Code readability for others
+    -   makes it easier for outside readers to review and edit your code
+
+## select
+
+Suppose we want to view a subset of the data with a smaller number of columns that are of interest to us. We could decide to select the 'Sales_ID', 'name', 'year', and 'seats' column. To achieve that, we use the `select` function:
+
+```{r}
+usedcars %>% 
+  select(c('Sales_ID', 'name','year','seats')) %>%
+  head(n = 2) # Here I limit the output to 2 rows to avoid clogging the document with necessary data
+```
+
+You could of course store the output in another object by doing 'object_name' = 'code_above'.
+
+You can also use select to remove some columns from analysis by adding a minus sign in front of `c()`
+
+```{r}
+usedcars %>%
+  select(-c('name','year')) %>%
+  head(n = 2)
+```
+
+You can see from the output that the 'name' and 'year' columns have now been removed. Instead of using columns names, it is also possible to refer to columns by id, using their position in the dataframe. For example we could elect to only keep the first 7 columns:
+
+```{r}
+usedcars %>% 
+  select(c(1:7)) %>% 
+  head(n = 2)
+```
+
+You can apply this method to select or remove any column from the data:
+
+```{r}
+usedcars %>% 
+  select(c(1,5,10,12,13:15)) %>% 
+  head(n = 2)
+```
+
+**Exercise**
+
+For further analysis, we can create a subset of this data with fewer columns. Choose the shortest method to keep the following columns in a subset called subset: \* Sales_ID \* year \* fuel \* selling_price \* km_driven \* Region
+
+Once you've tried you can look at the solution here:
+
+```{r}
+subset = usedcars %>% 
+  select(c('Sales_ID','year','fuel','selling_price','km_driven','Region'))
+```
+
+## filter
+
+Now that you're familiar with the select function, we can move on to filtering data. The `filter` function allows us to keep rows in the data that meet one or more conditions. Suppose we would like to only keep entries for cars built in 1996. The `filter` function requires two arguments beyong the dataset: the column to filter from and the condition(s):
+
+```{r}
+subset %>%
+  filter(year == 1996)
+```
+
+You can use any of the following operators in this function:
+
+| Operator | Function                 |
+|----------|:-------------------------|
+| ==       | equal to                 |
+| !=       | not equal to             |
+| \<       | smaller than             |
+| \>       | greater than             |
+| \>=      | smaller than or equal to |
+| =\>      | greater than or equal to |
+
+Note that we do not use a single equal sign, but rather, a double equal sign. This is because we do not assume a match, we simply ask R whether there's a possibility for a match, and if so, to return the datapoint(s) where that is the case.
+
+It is also possible to chain conditions. Use the '&' (and) sign for a joint set of conditions: Suppose that you want to see all petrol engine cars that were build after 2010:
+
+```{r, echo=FALSE, out.width="50%", fig.cap="'And' filter"}
+knitr::include_graphics("joint filter.png")
+```
+
+```{r}
+subset %>%
+  filter(year > 2010 & fuel == 'Petrol') %>%
+  head(n = 3)
+```
+
+Alternatively, you can usethe '\|' (or) sign for an independent set of conditions.
+
+```{r, echo=FALSE, out.width="50%", fig.cap="'Or' filter"}
+knitr::include_graphics("aggregate filter.png")
+```
+
+```{r}
+subset %>%
+  filter(year > 2010 | fuel == 'Petrol') %>%
+  head(n = 3)
+```
+
+## arrange
+
+Sometimes, the sequential order of data matters. In those cases, you might want to arrange it in a particular order before grouping and/or summarising. Our subset dataset should be arranged already by default using the first column: 'Sales_ID'. We could instead prefer to have it ordered by year:
+
+```{r}
+subset %>% 
+  arrange(year) %>%
+  head(n = 10)
+```
+
+You can see from the output above that the data is now organised by year, which are in sequential order, whereas the 'Sales_ID' values are mixed up. It is also possible to specify the direction of order:
+
+```{r}
+subset %>% 
+  arrange(desc(year)) %>% 
+  head(n = 5)
+```
+
+The data now starts with the most recent observation.
+
+In some instances, you might want to sort the data based on more than one column. To do so, you can list any number of columns. By default, those will be sorted in ascending order. However, you can specify the direction for each column. We could want to view to data from most the most recent car to the oldest, but sort each year value based on the selling price in ascending order:
+
+```{r}
+subset %>% 
+  arrange(desc(year),selling_price) %>%
+  head(n = 5)
+```
+
+## distinct
+
+Sometimes you need to explore how many unique values you have in a dataframe. Where the `count` and `tally` functions will be more handy when it comes to simply count or assess how many unique observations of each type you have, the `distinct` function allows you to get rid of duplicates in your data. Let's assume you suspect that there might be more than one 'Sales_ID'. Since it is the primary key for the table this should not be the case. However, there are sometimes errors when recording data into a database, resulting in duplicate entries where there should only be unique entries. We will therefore check the length of the data as it is by using the `dim` function:
+
+```{r}
+subset %>%
+  dim()
+```
+
+We have 7906 observations. Now let's apply the `distinct` function to the 'Sales_ID' column, followed by the `dim` function:
+
+```{r}
+subset %>% 
+  distinct(Sales_ID) %>%
+  dim()
+```
+
+As you can see, we get the same number of rows: 7906. This means that there are no duplicates.
+
+Suppose you want to use the `distinct` function to extract the number of unique years present in the data. You could do the following:
+
+```{r}
+subset %>% 
+  distinct(year) %>%
+  arrange(year) %>% # Arrange the column by year in ascending order
+  head(n = 4) # Only display the first 4 observations
+```
+
+The distinct function returns all the unique year values as a dataframe with a single column. Only the four first observations are displayed here because we used the `head` function.
+
+In some cases, you will want to extract unique values of a column but preserve the dataframe. Since this example set only has unique primary key values, it is not necessary. However, we will still look at an example where you would like to keep unique 'km_driven' values, and preserve the other columns. We would need to add the `.keep_all` argument and set it equal to `TRUE`. Note that by default it is set to false, and that there needs to be a period preceding the argument:
+
+```{r}
+subset %>% 
+  distinct(km_driven, .keep_all = TRUE) %>% 
+  head(n = 4)
+
+subset %>% 
+  distinct(km_driven, .keep_all = TRUE) %>% 
+  dim()
+```
+
+You can see from the dimension of the new dataset that the columns have all been preserved (6), but the number of obsevations has been reduced to 898 down from 7906.
+
+## summarise
+
+The summarise function allows you to perform aggregate operations, such as summing, descriptive statics (e.g. mean, median, etc.), and variant-wise counting. We start by looking at the base-R version of doing things. Looking back into our 'subset' dataframe, we can calculate the mean selling_price for the whole dataset:
+
+```{r}
+mean(subset$selling_price)
+```
+
+This is the base-R notation, where the dataframe goes inside the function, and you specify the column by naming it preceded by a dollar sign. The `mean` function is not a `tidyverse` function. It will also transform your data completely, rather than just re-arranging the dataframe. It can therefore not be called directly after a pipe. You can try this by entering the following code: `subset %>% mean(selling_price)`. You'll get a warning and it will return an empty value.
+
+what you should do instead is pass the `mean` function inside the `summarise` function as follows:
+
+```{r}
+subset %>% 
+  summarise(mean(selling_price))
+```
+
+Note that with the method above the resulting column will have a very inconvenient name: 'mean(selling_price)'. You could instead name the column as follows:
+
+```{r}
+subset %>% 
+  summarise(mean_price = mean(selling_price))
+```
+
+Any aggregation function can be passed inside of the `summarise` function:
+
+```{r}
+subset %>% 
+  summarise(total_price = sum(selling_price))
+```
+
+You can also perform multiple simultaneous operations inside the `summarise` function:
+
+```{r}
+subset %>% 
+  summarise(mean_price = mean(selling_price),
+            total_price = sum(selling_price))
+```
+
+## group_by
+
+Now that you have seen how the `summarise` function works, we can properly introduce the `group_by` function. Going back to the example we used above, where we calculated the mean selling price of the whole dataset, we could need a more precise average. Suppose you want the average for each year in the whole dataset. This is where the `group_by` function comes into play. You simply need to choose the grouping argument, the year in this case, and then follow with the `summarise` function, exactly as we did above:
+
+```{r}
+subset %>% 
+  group_by(year) %>% 
+  summarise(mean_price_year = mean(selling_price)) %>% 
+  arrange(year) %>%
+  head(n = 4)
+```
+
+The output is a dataframe listing the mean selling price for each year. The `group_by` function is possibly the most important tidyverse function, since it allows you to run all of your transformations on a subset of observations.
+
+You can of course have more than one grouping variable. Suppose you want the same output as above, but with more granularity, such that you would know the mean selling price by year for each fuel type:
+
+```{r}
+subset %>% 
+  group_by(fuel, year) %>%
+  summarise(mean_price_year_eng = mean(selling_price)) %>% 
+  arrange(year) %>%
+  head(n = 6)
+```
+
+Now for each fuel type, you have the mean selling price by year. Much like the summarise example above, you could also do multiple summarising operations in a single transformation. Note that `group_by` is a persistent function. Sometimes your might want to perform multiple operations in a row that require different grouping sequences. In such cases the data will remain grouped unless otherwise specified. It is therefore good practise that if you intend on using the output for anything else than storage of visualisation, you should `ungroup` the data:
+
+```{r}
+subset %>% 
+  group_by(fuel, year) %>%
+  summarise(mean_price_year_fuel = mean(selling_price)) %>% 
+  arrange(year) %>%
+  head(n = 1) %>%
+  ungroup()
+```
+
+## count/tally
+
+The `count` function is a self-contained summarising function that counts all the unique observations in a dataframe colum. It returns a column containing the unique observation names, and the number of occurences of each one in the data. Suppose we want to know which types of fuel are in the data, and how many times they occur, we can simply call our dataframe, and pass the 'fuel' column into the `count` function:
+
+```{r}
+subset %>% 
+  count(fuel)
+```
+
+You can see that the resulting dataframe has 4 rows, indicating that there are 4 different types of fuel, and the "n" value indicates the number of occurences for each type. You can make the output more tidy by adding two arguments to the `count` function. The first one is the name of the count column, which is determined by 'name ='. The second one is the order in which the data is displayed. The usual way would be to add the `arrange` function and chain it with a pipe. However, the `count` function has a built in argument to arrange the result in descending order. You can pass the 'sort = TRUE' argument:
+
+```{r}
+subset %>% 
+  count(fuel, sort = TRUE, name = 'observation_count')
+```
+
+You can use count with more than one grouping variable, however, it is rather inefficient because you have to go through the process of naming each column. Instead, if you're looking to count observations based on two or more grouping variables, I recommend using `group_by` with \tally . Let's suppose that you would like to count the number of observations for each fuel type and Region combinations:
+
+```{r}
+subset %>% 
+  group_by(fuel, Region) %>% 
+  tally(name = "observation_count") %>%
+  arrange(desc(observation_count)) %>% 
+  head(n = 4)
+```
+
+As you can see, the grouping variables are passed into the `group_by` function, whereas the count is performed by the `tally` function. Within `tally` you can also immediately rename the count column, and using prior knowledge from the `arrange` function to sort the output.
+
+## mutate
+
+The `mutate` function allows its user to create or transform dataframe columns. It performs simultaneous column-wise operations. It is also usually restricted to per-column operations, although some of the variations of the functions allow for applications on multiple columns in the data.
+
+Let's return to our subset dataframe and perform some changes to it. The 'km_driven' values are given in kms, as indicated by the column name. However, we could want to reduced the volume of the column by displaying that data in thousands of kms:
+
+```{r}
+subset = subset %>% 
+  mutate(thousand_km_driven = km_driven / 1000)
+
+subset %>%
+  head(n = 3)
+```
+
+The `mutate` function can be applied to do various types of transformations. Numeric columns can be combined through any standard mathematical operators. Be cautious when naming the new column generated. If that column already exists if will replace the existing one. Let's illustrate this by multiplying our new column values by 0, and give the output column the same name:
+
+```{r}
+subset %>%
+  mutate(thousand_km_driven = thousand_km_driven * 0) %>%
+  head(n = 3)
+
+```
+
+## rename
+
+The `rename` is a simplified version of mutate that only allows the user to rename one or more columns. From the above examples, if you wanted to change the 'Region' column name to remove the capital 'R'. You could of course use `mutate` and delete the old column with `select`:
+
+```{r}
+subset %>% 
+  mutate(region = Region) %>%
+  select(-Region) %>%
+  head(n = 1)
+```
+
+This has the following downsides:
+
+-   requires two different lines of code
+-   moves the renamed column to the last position in the dataframe unless otherwise specified
+-   computationally slower
+
+Instead of using `mutate`, you can do the same as above without displacing the 'Region' column by using `rename`. The arguments are 'new name' equals 'old name':
+
+```{r}
+subset %>% 
+  rename(region = Region)%>%
+  head(n = 1)
+```
+
+# Visualising Data with ggplot
+
+Once you have gone through the most important tidyverse functions, you should be comfortable enough with data manipulation to create your first set of graphs. R-base has a visualisation library built-in. Suppose you would like to view the relationship between the selling_price and km_driven from our earlier subset.
+
+```{r}
+plot(subset$km_driven, subset$selling_price)
+```
+
+The creation of a plot is quite straightforward with this library. However, I tend to use `ggplot2` for almost all my analysis. The same plot can be done with that library (which is loaded automatically with the tidyverse package):
+
+```{r}
+subset %>% 
+  ggplot(aes(km_driven, selling_price)) +
+  geom_point()
+```
+
+Voilà! Let's look at the differences. It is clear that the code to obtain such a plot is shorter and faster to write in the base visualisation library. However, it is less 'tidy'. The `ggplot2` code is easier to read. The data used is clearly stated, the columns are on a different line, and you can see the type of plot that is requested.
+
+Generally, \``ggplot2` plots look slightly worse in their base form, but with a bit of customization, they look much more pristine than their base-R counterparts. However, one of the biggest advantages in my opinion is the ability to chain data with pipes. This essentially means that you can run transformations and are not required to store them in the global environment. We'll briefly illustrate this. Let us suppose we only want to visualise the above relationship for cars sold in the 'East' region. With base-R plots we would do the following:
+
+```{r}
+subset_east = subset %>% 
+  filter(Region == 'East')
+
+plot(subset_east$km_driven, subset_east$selling_price)
+```
+
+The `ggplot2` equivalent would require the following code:
+
+```{r}
+subset %>% 
+  filter(Region == 'East') %>% 
+  ggplot(aes(km_driven, selling_price)) +
+  geom_point()
+```
+
+In the second scenario, we are not forced to store the subset of our subset dataframe to produce the plot. This is handy when you want to apply a transformation only for the purpose of a single visualisation.
