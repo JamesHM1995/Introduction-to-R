@@ -154,7 +154,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate"> <span class="header-section-number">4.9</span> mutate</a></li>
   <li><a href="#rename" id="toc-rename" class="nav-link" data-scroll-target="#rename"> <span class="header-section-number">4.10</span> rename</a></li>
   </ul></li>
-  <li><a href="#visualising-data-with-ggplot" id="toc-visualising-data-with-ggplot" class="nav-link" data-scroll-target="#visualising-data-with-ggplot"> <span class="header-section-number">5</span> Visualising Data with ggplot</a></li>
+  <li><a href="#visualising-data-with-ggplot2" id="toc-visualising-data-with-ggplot2" class="nav-link" data-scroll-target="#visualising-data-with-ggplot2"> <span class="header-section-number">5</span> Visualising Data with ggplot2</a>
+  <ul class="collapse">
+  <li><a href="#introduction---why-ggplot2" id="toc-introduction---why-ggplot2" class="nav-link" data-scroll-target="#introduction---why-ggplot2"> <span class="header-section-number">5.1</span> Introduction - Why ggplot2?</a></li>
+  <li><a href="#plot-basics" id="toc-plot-basics" class="nav-link" data-scroll-target="#plot-basics"> <span class="header-section-number">5.2</span> Plot Basics</a>
+  <ul class="collapse">
+  <li><a href="#bar-plot" id="toc-bar-plot" class="nav-link" data-scroll-target="#bar-plot"> <span class="header-section-number">5.2.1</span> Bar Plot</a></li>
+  <li><a href="#time-series" id="toc-time-series" class="nav-link" data-scroll-target="#time-series"> <span class="header-section-number">5.2.2</span> Time Series</a></li>
+  <li><a href="#boxplots" id="toc-boxplots" class="nav-link" data-scroll-target="#boxplots"> <span class="header-section-number">5.2.3</span> Boxplots</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -232,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/r%20studio%20console.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/r%20studio%20console.png" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption">The RStudio Console</figcaption><p></p>
 </figure>
 </div>
@@ -248,7 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/r%20studio%20environment.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/r%20studio%20environment.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption">The RStudio Environment</figcaption><p></p>
 </figure>
 </div>
@@ -263,7 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/r%20studio%20console%20files%20and%20plots.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/r%20studio%20console%20files%20and%20plots.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption">The RStudio File an Plot Tab</figcaption><p></p>
 </figure>
 </div>
@@ -277,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/r%20studio%20r%20script.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/r%20studio%20r%20script.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption">RStudio Script</figcaption><p></p>
 </figure>
 </div>
@@ -608,11 +617,11 @@ The following objects are masked from 'package:base':
 <h1 data-number="3"><span class="header-section-number">3</span> Exploring a DataSet</h1>
 <section id="loading-a-dataset-and-displaying-the-first-row-of-data" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="loading-a-dataset-and-displaying-the-first-row-of-data"><span class="header-section-number">3.1</span> Loading a dataset and displaying the first row of data</h2>
-<p>Now that you have a fundamental understanding of tibbles and how to import datasets in R, let’s open the ‘Used-Car Data’ dataset. You can get it here by creating a free account on kaggle: <a href="https://www.kaggle.com/datasets/shubham1kumar/usedcar-data?select=UserCarData.csv" class="uri">https://www.kaggle.com/datasets/shubham1kumar/usedcar-data?select=UserCarData.csv</a> You can also find the dataset in the Onboarding folder on the PrivateDeal Google Drive. We load the dataset using the <code>read.csv</code> function, and then use <code>head(, n = 1)</code> to display the first row of data.</p>
+<p>Now that you have a fundamental understanding of tibbles and how to import datasets in R, let’s open the ‘Used-Car Data’ dataset. You can get it here by creating a free account on kaggle: <a href="https://www.kaggle.com/datasets/shubham1kumar/usedcar-data?select=UserCarData.csv" class="uri">https://www.kaggle.com/datasets/shubham1kumar/usedcar-data?select=UserCarData.csv</a> You can also find the dataset in the Public Github repository <a href="https://github.com/JamesHM1995/Introduction-to-R" class="uri">https://github.com/JamesHM1995/Introduction-to-R</a> under ‘docs/data’. We load the dataset using the <code>read.csv</code> function, and then use <code>head(, n = 1)</code> to display the first row of data.</p>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>usedcars <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"G:</span><span class="sc">\\</span><span class="st">My Drive</span><span class="sc">\\</span><span class="st">PrivateDeal Team</span><span class="sc">\\</span><span class="st">Onboarding New employees</span><span class="sc">\\</span><span class="st">Product Development - Data Analytics</span><span class="sc">\\</span><span class="st">UsedCarData.csv"</span>)</span>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>usedcars <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"C:/Users/james/Documents/GitHub/Introduction-to-R/docs/data/UsedCarData.csv"</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(usedcars, <span class="at">n =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1594,8 +1603,10 @@ The following objects are masked from 'package:base':
 </div>
 </section>
 </section>
-<section id="visualising-data-with-ggplot" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Visualising Data with ggplot</h1>
+<section id="visualising-data-with-ggplot2" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Visualising Data with ggplot2</h1>
+<section id="introduction---why-ggplot2" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="introduction---why-ggplot2"><span class="header-section-number">5.1</span> Introduction - Why ggplot2?</h2>
 <p>Once you have gone through the most important tidyverse functions, you should be comfortable enough with data manipulation to create your first set of graphs. R-base has a visualisation library built-in. Suppose you would like to view the relationship between the selling_price and km_driven from our earlier subset.</p>
 <div class="cell">
 <details>
@@ -1618,8 +1629,8 @@ The following objects are masked from 'package:base':
 <p><img src="index_files/figure-html/unnamed-chunk-55-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Voilà! Let’s look at the differences. It is clear that the code to obtain such a plot is shorter and faster to write in the base visualisation library. However, it is less ‘tidy’. The <code>ggplot2</code> code is easier to read. The data used is clearly stated, the columns are on a different line, and you can see the type of plot that is requested.</p>
-<p>Generally, `<code>ggplot2</code> plots look slightly worse in their base form, but with a bit of customization, they look much more pristine than their base-R counterparts. However, one of the biggest advantages in my opinion is the ability to chain data with pipes. This essentially means that you can run transformations and are not required to store them in the global environment. We’ll briefly illustrate this. Let us suppose we only want to visualise the above relationship for cars sold in the ‘East’ region. With base-R plots we would do the following:</p>
+<p>Voilà! Let’s look at the differences. It is clear that the code to obtain such a plot is shorter and faster to write in the base visualisation library. However, it is less ‘tidy’, in the sense that the <code>ggplot2</code> code is easier to read. The data used is clearly stated, the columns are on a different line, and you can see the type of plot that is requested.</p>
+<p>Yet, in spite of those differences, one of the biggest advantages to <code>ggplot2</code> in my view is the ability to chain data with pipes. This essentially means that you can run transformations and are not required to store them in the global environment. We’ll briefly illustrate this. Let us suppose we only want to visualise the above relationship for cars sold in the ‘East’ region. With base-R plots we would do the following:</p>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
@@ -1645,7 +1656,96 @@ The following objects are masked from 'package:base':
 <p><img src="index_files/figure-html/unnamed-chunk-57-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>In the second scenario, we are not forced to store the subset of our subset dataframe to produce the plot. This is handy when you want to apply a transformation only for the purpose of a single visualisation.</p>
+<p>In the second scenario, we are not forced to store a new dataframe in lieu of our original data to produce the plot. This is handy when you want to apply a transformation only for the purpose of a single visualisation.</p>
+</section>
+<section id="plot-basics" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="plot-basics"><span class="header-section-number">5.2</span> Plot Basics</h2>
+<p>In the previous section we created a scatterplot using <code>geom_point()</code>. There are of course either types of plot availabe to us.</p>
+<section id="bar-plot" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="bar-plot"><span class="header-section-number">5.2.1</span> Bar Plot</h3>
+<p>Suppose we want a barchart that contains the average selling price per region. We will use all our aquired knowledge to obtain the mean using <code>group_by</code>, <code>summarise</code>, and <code>mean</code>. Note that we use the <code>round</code> function to remove any number after the decimal point.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Region) <span class="sc">%&gt;%</span> </span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_regional_sell =</span> <span class="fu">round</span>(<span class="fu">mean</span>(selling_price, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  Region  mean_regional_sell
+  &lt;chr&gt;                &lt;dbl&gt;
+1 Central             637718
+2 East                630165
+3 South               720585
+4 West                625796</code></pre>
+</div>
+</div>
+<p>Now we can apply that data transformation to the creation of a barplot. To produce a barplot, we need to specify the aesthetics, e.g.&nbsp;what goes on the x-axis and what goes on the y-axis. We then call the <code>geom_bar()</code> function:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(highcharter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'quantmod':
+  method            from
+  as.zoo.data.frame zoo </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Highcharts (www.highcharts.com) is a Highsoft software product which is</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>not free for commercial and Governmental use</code></pre>
+</div>
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Region) <span class="sc">%&gt;%</span> </span>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_regional_sell =</span> <span class="fu">round</span>(<span class="fu">mean</span>(selling_price, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Region, <span class="at">y =</span> mean_regional_sell)) <span class="sc">+</span></span>
+<span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-59-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="time-series" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="time-series"><span class="header-section-number">5.2.2</span> Time Series</h3>
+<p>Alternatively, you could want to view the mean sales price year on year. To do so, we can create a line plot. Of course, we first need to group the data by year and compute the mean sales value:</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span> </span>
+<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_yearly_sell =</span> <span class="fu">round</span>(<span class="fu">mean</span>(selling_price, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> mean_yearly_sell)) <span class="sc">+</span></span>
+<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-60-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>A quick glance at the plot will serve as a reminder that 2020 was an eventful year in every industry.</p>
+</section>
+<section id="boxplots" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="boxplots"><span class="header-section-number">5.2.3</span> Boxplots</h3>
+<p>One of the final examples we will highlight is the boxplot. Boxplots are a key part of descriptive statistics, and as such, a very important tool to master. Suppose we want to see the distribution of prices for each region. We use the <code>geom_boxplot()</code> function. Note that it automatically generates the data distribution, so there is no need to reshape data.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Region, <span class="at">y =</span> selling_price)) <span class="sc">+</span></span>
+<span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-61-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>There are, of course, many other types of plots that can be generated using <code>ggplot2</code>. You can either have a look at the package documentation, or for a more user-friendly overview, check the ggplot2 cheat sheet in the Introduction-to-R repository.</p>
+</section>
+</section>
 </section>
 
 </main>

@@ -70,7 +70,7 @@ However, the goal of this guide is not to go over all of the functionalities of 
 
 When you start RStudio for the first time, you will generally have three 'main' areas. In front of you on the left, the console:
 
-```{r, echo=FALSE, out.width="100%", fig.cap = "The RStudio Console"}
+```{r, echo=FALSE, out.width="80%", fig.cap = "The RStudio Console"}
 knitr::include_graphics("images/r studio console.png")
 ```
 
@@ -83,7 +83,7 @@ Beyond the console pane, you also have a 'Terminal' and 'Background Jobs' tab. T
 
 At the top right of your screen, you have a box with the Environment tab:
 
-```{r, echo=FALSE, out.width="100%", fig.cap = "The RStudio Environment"}
+```{r, echo=FALSE, out.width="50%", fig.cap = "The RStudio Environment"}
 knitr::include_graphics("images/r studio environment.png")
 ```
 
@@ -93,7 +93,7 @@ This is were you can see all of the variables and objects you created, including
 
 The tab on the bottom right is where you can navigate to different files in the current working directory, see which packages are available and loaded, and view interactive and static plots:
 
-```{r, echo=FALSE, out.width="100%", fig.cap = "The RStudio File an Plot Tab"}
+```{r, echo=FALSE, out.width="50%", fig.cap = "The RStudio File an Plot Tab"}
 knitr::include_graphics("images/r studio console files and plots.png")
 ```
 
@@ -101,7 +101,7 @@ knitr::include_graphics("images/r studio console files and plots.png")
 
 Instead of typing directly into the console, you should go to 'New File', located below the 'File' button, and create a new R script. You can then type in commands there and run them by highlighting the code and pressing Ctrl+Enter or using the 'Run' button. The advantage of having a script is that your code can be saved and used again, as opposed to typing it in directly everytime if you only used the console. There are many different types of scripts you can create, although those are not outlined in this version of the introduction.
 
-```{r, echo=FALSE, out.width="100%", fig.cap = "RStudio Script"}
+```{r, echo=FALSE, out.width="50%", fig.cap = "RStudio Script"}
 knitr::include_graphics("images/r studio r script.png")
 ```
 
@@ -296,10 +296,10 @@ setwd("C:/Users/james/Documents/GitHub/Introduction-to-R/docs")
 
 ## Loading a dataset and displaying the first row of data
 
-Now that you have a fundamental understanding of tibbles and how to import datasets in R, let's open the 'Used-Car Data' dataset. You can get it here by creating a free account on kaggle: <https://www.kaggle.com/datasets/shubham1kumar/usedcar-data?select=UserCarData.csv> You can also find the dataset in the Onboarding folder on the PrivateDeal Google Drive. We load the dataset using the `read.csv` function, and then use `head(, n = 1)` to display the first row of data.
+Now that you have a fundamental understanding of tibbles and how to import datasets in R, let's open the 'Used-Car Data' dataset. You can get it here by creating a free account on kaggle: <https://www.kaggle.com/datasets/shubham1kumar/usedcar-data?select=UserCarData.csv> You can also find the dataset in the Public Github repository <https://github.com/JamesHM1995/Introduction-to-R> under 'docs/data'. We load the dataset using the `read.csv` function, and then use `head(, n = 1)` to display the first row of data.
 
 ```{R}
-usedcars <- read.csv("G:\\My Drive\\PrivateDeal Team\\Onboarding New employees\\Product Development - Data Analytics\\UsedCarData.csv")
+usedcars <- read.csv("C:/Users/james/Documents/GitHub/Introduction-to-R/docs/data/UsedCarData.csv")
 
 head(usedcars, n = 1)
 ```
@@ -699,7 +699,9 @@ subset %>%
   head(n = 1)
 ```
 
-# Visualising Data with ggplot
+# Visualising Data with ggplot2
+
+## Introduction - Why ggplot2?
 
 Once you have gone through the most important tidyverse functions, you should be comfortable enough with data manipulation to create your first set of graphs. R-base has a visualisation library built-in. Suppose you would like to view the relationship between the selling_price and km_driven from our earlier subset.
 
@@ -715,9 +717,9 @@ subset %>%
   geom_point()
 ```
 
-Voilà! Let's look at the differences. It is clear that the code to obtain such a plot is shorter and faster to write in the base visualisation library. However, it is less 'tidy'. The `ggplot2` code is easier to read. The data used is clearly stated, the columns are on a different line, and you can see the type of plot that is requested.
+Voilà! Let's look at the differences. It is clear that the code to obtain such a plot is shorter and faster to write in the base visualisation library. However, it is less 'tidy', in the sense that the `ggplot2` code is easier to read. The data used is clearly stated, the columns are on a different line, and you can see the type of plot that is requested.
 
-Generally, \``ggplot2` plots look slightly worse in their base form, but with a bit of customization, they look much more pristine than their base-R counterparts. However, one of the biggest advantages in my opinion is the ability to chain data with pipes. This essentially means that you can run transformations and are not required to store them in the global environment. We'll briefly illustrate this. Let us suppose we only want to visualise the above relationship for cars sold in the 'East' region. With base-R plots we would do the following:
+Yet, in spite of those differences, one of the biggest advantages to `ggplot2` in my view is the ability to chain data with pipes. This essentially means that you can run transformations and are not required to store them in the global environment. We'll briefly illustrate this. Let us suppose we only want to visualise the above relationship for cars sold in the 'East' region. With base-R plots we would do the following:
 
 ```{r}
 subset_east = subset %>% 
@@ -735,4 +737,56 @@ subset %>%
   geom_point()
 ```
 
-In the second scenario, we are not forced to store the subset of our subset dataframe to produce the plot. This is handy when you want to apply a transformation only for the purpose of a single visualisation.
+In the second scenario, we are not forced to store a new dataframe in lieu of our original data to produce the plot. This is handy when you want to apply a transformation only for the purpose of a single visualisation.
+
+## Plot Basics
+
+
+In the previous section we created a scatterplot using `geom_point()`. There are of course either types of plot availabe to us. 
+
+### Bar Plot
+
+Suppose we want a barchart that contains the average selling price per region. We will use all our aquired knowledge to obtain the mean using `group_by`, `summarise`, and `mean`. Note that we use the `round` function to remove any number after the decimal point.
+
+```{r}
+subset %>% 
+  group_by(Region) %>% 
+  summarise(mean_regional_sell = round(mean(selling_price, na.rm = TRUE),0))
+```
+Now we can apply that data transformation to the creation of a barplot. To produce a barplot, we need to specify the aesthetics, e.g. what goes on the x-axis and what goes on the y-axis. We then call the `geom_bar()` function:
+
+```{r}
+library(highcharter)
+subset %>% 
+  group_by(Region) %>% 
+  summarise(mean_regional_sell = round(mean(selling_price, na.rm = TRUE),0)) %>% 
+  ggplot(aes(x = Region, y = mean_regional_sell)) +
+  geom_col() 
+```
+### Time Series
+
+Alternatively, you could want to view the mean sales price year on year. To do so, we can create a line plot. Of course, we first need to group the data by year and compute the mean sales value:
+
+```{r}
+subset %>% 
+  group_by(year) %>% 
+  summarise(mean_yearly_sell = round(mean(selling_price, na.rm = TRUE),0)) %>% 
+  ggplot(aes(x = year, y = mean_yearly_sell)) +
+  geom_line()
+```
+
+A quick glance at the plot will serve as a reminder that 2020 was an eventful year in every industry.
+
+### Boxplots
+
+One of the final examples we will highlight is the boxplot. Boxplots are a key part of descriptive statistics, and as such, a very important tool to master. Suppose we want to see the distribution of prices for each region. We use the `geom_boxplot()` function. Note that it automatically generates the data distribution, so there is no need to reshape data.
+
+```{r}
+subset %>% 
+  ggplot(aes(x = Region, y = selling_price)) +
+  geom_boxplot()
+```
+
+There are, of course, many other types of plots that can be generated using `ggplot2`. You can either have a look at the package documentation, or for a more user-friendly overview, check the ggplot2 cheat sheet in the Introduction-to-R repository.
+
+
