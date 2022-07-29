@@ -163,6 +163,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#time-series" id="toc-time-series" class="nav-link" data-scroll-target="#time-series"> <span class="header-section-number">5.2.2</span> Time Series</a></li>
   <li><a href="#boxplots" id="toc-boxplots" class="nav-link" data-scroll-target="#boxplots"> <span class="header-section-number">5.2.3</span> Boxplots</a></li>
   </ul></li>
+  <li><a href="#colours-fills-and-long-data" id="toc-colours-fills-and-long-data" class="nav-link" data-scroll-target="#colours-fills-and-long-data"> <span class="header-section-number">5.3</span> Colours, Fills and ‘Long’ Data</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1685,26 +1686,11 @@ The following objects are masked from 'package:base':
 <div class="cell">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(highcharter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Registered S3 method overwritten by 'quantmod':
-  method            from
-  as.zoo.data.frame zoo </code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Highcharts (www.highcharts.com) is a Highsoft software product which is</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>not free for commercial and Governmental use</code></pre>
-</div>
-<details>
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
-<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Region) <span class="sc">%&gt;%</span> </span>
-<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_regional_sell =</span> <span class="fu">round</span>(<span class="fu">mean</span>(selling_price, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Region, <span class="at">y =</span> mean_regional_sell)) <span class="sc">+</span></span>
-<span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Region) <span class="sc">%&gt;%</span> </span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_regional_sell =</span> <span class="fu">round</span>(<span class="fu">mean</span>(selling_price, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Region, <span class="at">y =</span> mean_regional_sell)) <span class="sc">+</span></span>
+<span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-59-1.png" class="img-fluid" width="672"></p>
@@ -1717,11 +1703,11 @@ The following objects are masked from 'package:base':
 <div class="cell">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
-<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span> </span>
-<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_yearly_sell =</span> <span class="fu">round</span>(<span class="fu">mean</span>(selling_price, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> mean_yearly_sell)) <span class="sc">+</span></span>
-<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span> </span>
+<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_yearly_sell =</span> <span class="fu">round</span>(<span class="fu">mean</span>(selling_price, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),<span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> mean_yearly_sell)) <span class="sc">+</span></span>
+<span id="cb115-5"><a href="#cb115-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-60-1.png" class="img-fluid" width="672"></p>
@@ -1735,9 +1721,9 @@ The following objects are masked from 'package:base':
 <div class="cell">
 <details>
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
-<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Region, <span class="at">y =</span> selling_price)) <span class="sc">+</span></span>
-<span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Region, <span class="at">y =</span> selling_price)) <span class="sc">+</span></span>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-61-1.png" class="img-fluid" width="672"></p>
@@ -1745,6 +1731,36 @@ The following objects are masked from 'package:base':
 </div>
 <p>There are, of course, many other types of plots that can be generated using <code>ggplot2</code>. You can either have a look at the package documentation, or for a more user-friendly overview, check the ggplot2 cheat sheet in the Introduction-to-R repository.</p>
 </section>
+</section>
+<section id="colours-fills-and-long-data" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="colours-fills-and-long-data"><span class="header-section-number">5.3</span> Colours, Fills and ‘Long’ Data</h2>
+<p>All the plots above only made use of two of the variables in our data. We can make usage of the the blank demeanor of our plot, and add a third variable through the user of colors and fills. (colors for lines and dots, fills for columns, bars, etc.)</p>
+<p>First, however, we need to discuss the format of the data you’ll be encountering. Our dataset is already quite ‘tidy’. But let’s apply a transformation to illustrate some of the less ‘tidy’ data types you’ll see. We use the <code>pivot_wider</code> function to make the Region column into four separate columns, one for each region.</p>
+<div class="cell">
+<details>
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>subset <span class="sc">%&gt;%</span> </span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="fu">everything</span>(), <span class="at">names_from =</span> <span class="st">'Region'</span>, <span class="at">values_from =</span> <span class="st">'selling_price'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(East,Central,West,South), <span class="at">names_to =</span> <span class="st">'Region'</span>, <span class="at">values_to =</span> <span class="st">'selling_price'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 31,624 × 7
+   Sales_ID  year fuel   km_driven thousand_km_driven Region  selling_price
+      &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;int&gt;              &lt;dbl&gt; &lt;chr&gt;           &lt;int&gt;
+ 1        1  2014 Diesel    145500               146. East           450000
+ 2        1  2014 Diesel    145500               146. Central            NA
+ 3        1  2014 Diesel    145500               146. West               NA
+ 4        1  2014 Diesel    145500               146. South              NA
+ 5        2  2014 Diesel    120000               120  East           370000
+ 6        2  2014 Diesel    120000               120  Central            NA
+ 7        2  2014 Diesel    120000               120  West               NA
+ 8        2  2014 Diesel    120000               120  South              NA
+ 9        3  2006 Petrol    140000               140  East               NA
+10        3  2006 Petrol    140000               140  Central        158000
+# … with 31,614 more rows
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
+</div>
+</div>
 </section>
 </section>
 

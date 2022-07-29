@@ -756,7 +756,6 @@ subset %>%
 Now we can apply that data transformation to the creation of a barplot. To produce a barplot, we need to specify the aesthetics, e.g. what goes on the x-axis and what goes on the y-axis. We then call the `geom_bar()` function:
 
 ```{r}
-library(highcharter)
 subset %>% 
   group_by(Region) %>% 
   summarise(mean_regional_sell = round(mean(selling_price, na.rm = TRUE),0)) %>% 
@@ -788,5 +787,17 @@ subset %>%
 ```
 
 There are, of course, many other types of plots that can be generated using `ggplot2`. You can either have a look at the package documentation, or for a more user-friendly overview, check the ggplot2 cheat sheet in the Introduction-to-R repository.
+
+## Colours, Fills and 'Long' Data
+
+All the plots above only made use of two of the variables in our data. We can make usage of the the blank demeanor of our plot, and add a third variable through the user of colors and fills. (colors for lines and dots, fills for columns, bars, etc.)
+
+First, however, we need to discuss the format of the data you'll be encountering. Our dataset is already quite 'tidy'. But let's apply a transformation to illustrate some of the less 'tidy' data types you'll see. We use the `pivot_wider` function to make the Region column into four separate columns, one for each region.
+
+```{r}
+subset %>% 
+  pivot_wider(everything(), names_from = 'Region', values_from = 'selling_price') %>% 
+  pivot_longer(c(East,Central,West,South), names_to = 'Region', values_to = 'selling_price')
+```
 
 
