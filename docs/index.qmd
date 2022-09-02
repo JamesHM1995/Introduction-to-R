@@ -40,7 +40,7 @@ An Introduction to Statistical Learning more complete, but is slightly more adva
 
 ## R-Packages
 
-Like most surface languages, R has a base version, which in itself is powerful enough to do most tasks. However, one of the strengths of R is the variety and quality of the packages that are available. Package are extensions that sometimes improve and simplify base-R functions, or sometimes add some that are absent. A lost of the most used tidyverse functions are available in a different form in base-R, but are, at least in my opinion, not as user-friendly, intuitive, and perhaps most importantly, not as readable post-writing. 
+Like most surface languages, R has a base version, which in itself is powerful enough to do most tasks. However, one of the strengths of R is the variety and quality of the packages that are available. Package are extensions that sometimes improve and simplify base-R functions, or sometimes add some that are absent. A lost of the most used tidyverse functions are available in a different form in base-R, but are, at least in my opinion, not as user-friendly, intuitive, and perhaps most importantly, not as readable post-writing.
 
 Conversely, there is no connector in base-R that allows for a connection to an enterprise database. In some cases, rather than importing .csv or .xlsx data, you need to directly pull data from a MySQL database. There are different packages that offer such functionality. Those will be covered towards the end of this guide.
 
@@ -64,7 +64,7 @@ There are of course many other packages that will be of great use to you, but th
 
 RStudio is a very powerful program, beyond editing standard r-scripts it helps you manage packages, provides you with an overview of your environment and all the plots your produce. It has a build in Viewer so that you are not forced to open a browser to view html content. Furthermore, it also allows for the creation of markdown files, shiny interactive apps, and more. You can also use other languages, such as SQL, Python, and many others. Most recently, the RStudio team has worked hard to create a framework enabling users to code in R and Python in a single script, enabling anyone to leverage the strengths of both languages.
 
-However, the goal of this guide is not to go over all of the functionalities of the RStudio IDE. Instead, we will briefly go through the base functions at your disposal to get you started with writing code in R. For anything beyond that, a quick Google search will likely answer most of your queries. 
+However, the goal of this guide is not to go over all of the functionalities of the RStudio IDE. Instead, we will briefly go through the base functions at your disposal to get you started with writing code in R. For anything beyond that, a quick Google search will likely answer most of your queries.
 
 ### Console
 
@@ -78,8 +78,7 @@ The console will print the output of your commands. You can write all your code 
 
 Beyond the console pane, you also have a 'Terminal' and 'Background Jobs' tab. The terminal allows you to open a standard terminal window. By default this is a cmd prompt for windows and a git bash prompt for mac and linux users. The background jobs tab will be covered at a later stage.
 
-
-### Enrionment
+### Environment
 
 At the top right of your screen, you have a box with the Environment tab:
 
@@ -741,8 +740,7 @@ In the second scenario, we are not forced to store a new dataframe in lieu of ou
 
 ## Plot Basics
 
-
-In the previous section we created a scatterplot using `geom_point()`. There are of course either types of plot availabe to us. 
+In the previous section we created a scatterplot using `geom_point()`. There are of course either types of plot availabe to us.
 
 ### Bar Plot
 
@@ -753,6 +751,7 @@ subset %>%
   group_by(Region) %>% 
   summarise(mean_regional_sell = round(mean(selling_price, na.rm = TRUE),0))
 ```
+
 Now we can apply that data transformation to the creation of a barplot. To produce a barplot, we need to specify the aesthetics, e.g. what goes on the x-axis and what goes on the y-axis. We then call the `geom_bar()` function:
 
 ```{r}
@@ -762,6 +761,7 @@ subset %>%
   ggplot(aes(x = Region, y = mean_regional_sell)) +
   geom_col() 
 ```
+
 ### Time Series
 
 Alternatively, you could want to view the mean sales price year on year. To do so, we can create a line plot. Of course, we first need to group the data by year and compute the mean sales value:
@@ -792,12 +792,252 @@ There are, of course, many other types of plots that can be generated using `ggp
 
 All the plots above only made use of two of the variables in our data. We can make usage of the the blank demeanor of our plot, and add a third variable through the user of colors and fills. (colors for lines and dots, fills for columns, bars, etc.)
 
-First, however, we need to discuss the format of the data you'll be encountering. Our dataset is already quite 'tidy'. But let's apply a transformation to illustrate some of the less 'tidy' data types you'll see. We use the `pivot_wider` function to make the Region column into four separate columns, one for each region.
+Note that ggplot favours 'long' data over 'wide' data. Let us illustrate this with the following example:
 
 ```{r}
-subset %>% 
-  pivot_wider(everything(), names_from = 'Region', values_from = 'selling_price') %>% 
-  pivot_longer(c(East,Central,West,South), names_to = 'Region', values_to = 'selling_price')
+data = tibble(month = c(1:12),
+       units_1999 = c(sample(c(100:150), 12, replace = TRUE)),
+       units_2000 = c(sample(c(110:160), 12, replace = TRUE)),
+       units_2001 = c(sample(c(105:155), 12, replace = TRUE)))
+
+data
+```
+
+Let's try to put this data into a line chart using `geom_line()`:
+
+```{r}
+data %>% 
+  ggplot(aes(x = month)) +
+  geom_line(aes(y = units_1999)) +
+  geom_line(aes(y = units_2000)) +
+  geom_line(aes(y = units_2001))
+```
+
+As you can see, it is feasible, yet rather impracticle. It would also leave us with the tedious task of manully assigning colours. Instead, we can reorganize our data using the `pivot_longer` function:
+
+```{r}
+data = data %>% 
+  pivot_longer(-month, names_to = 'variable', values_to = 'values')
+
+data %>% head(n = 2)
+```
+
+First, we go over the arguments in `pivot_longer`. We first select the columns that need to be 'pivoted'. In this case, we excluded the 'month' column, which does not need to be pivoted, using the minus sign. Then we define the target columns where the previous column headers need to be stored (units_1999, units_2000, and units_2001). We label it 'variable'. Then we define the target column for the values.
+
+Now we have a 'long' dataframe, with only three columns. We can therefore map the 'month' variable to the x-axis, the 'values' column to the y-axis, and lastly assign colours to the different factors in the 'variable column. Lastly, because this is a line plot, you need to tell ggplot which point series to connect the lines. In the `geom_line`, use the `aes` option, the `group` argument needs to be linked to the 'variable' column which contains the different factors.
+
+```{r}
+data %>% 
+  ggplot(aes(x = month, y = values, colour = variable)) +
+  geom_line(aes(group = variable))
+```
+
+This data could also be used to plot a barchart:
+
+
+```{r}
+data %>% 
+  ggplot(aes(x = month, y = values, fill = variable)) +
+  geom_col()
+```
+
+You now have a proper grasp on the main types of graphs available to you, and you easily present the data in a colourful manner. We can now work on making the above plot more tidy.
+
+## Plot and Axis Titles
+
+Every graph needs a title:
+
+```{r}
+data %>% 
+  ggplot(aes(x = month, y = values, fill = variable)) +
+  geom_col() +
+  ggtitle(label = 'Sales by Year')
+```
+
+We can simply use the `ggtitle` plot option, and write the title in quotation marks following the `label` argument. However, it is generally more practicle to use the `labs` option, since you can also specify a subtitle as well as the axis titles:
+
+```{r}
+data %>% 
+  ggplot(aes(x = month, y = values, fill = variable)) +
+  geom_col() +
+  labs(title = 'Sales by Year',
+       subtitle = '.com bubble',
+       x = 'Month',
+       y = 'Units Sold')
+```
+Now, we will illustrate a common problem with the x-axis overlapping. Let's transform our month identifiers to their full name counterparts. We use the `month` function from the `lubridate` package. We need to specify that we want the 'label' value, e.g. the month name ('January','February', etc.) and we want the full label, so we set `abbr` to FALSE. We use the mutate function to replace the old month column. Lastly, we produce our plot anew:
+
+
+```{r}
+data %>% 
+  mutate(month = month(month, label = TRUE, abbr = FALSE)) %>% 
+  ggplot(aes(x = month, y = values, fill = variable)) +
+  geom_col() +
+  labs(title = 'Sales by Year',
+       subtitle = '.com bubble',
+       x = 'Month',
+       y = 'Units Sold')
+```
+It is starting to look more clear, but the x-axis labels are now overlapping. We use the `theme` option to fix that problem, by giving the text an angle:
+
+```{r}
+data %>% 
+  mutate(month = month(month, label = TRUE, abbr = FALSE)) %>% 
+  ggplot(aes(x = month, y = values, fill = variable)) +
+  geom_col() +
+  labs(title = 'Sales by Year',
+       subtitle = '.com bubble',
+       x = 'Month',
+       y = 'Units Sold') +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+```
+
+We used the `axis.text.x` argument in the `theme` option to specify which axis to transform. Then the `element_text` argument allows us to enter an angle, and align the labels with the tick marks using hjust and vjust, which vertically and horizontally move the labels.
+
+Next, the legend is nice, but it takes up a lot of space on the right. We can place it at the bottom of the graph using the `theme` option and the `legend.position` argument:
+
+```{r}
+data %>% 
+  mutate(month = month(month, label = TRUE, abbr = FALSE)) %>% 
+  ggplot(aes(x = month, y = values, fill = variable)) +
+  geom_col() +
+  labs(title = 'Sales by Year',
+       subtitle = '.com bubble',
+       x = 'Month',
+       y = 'Units Sold') +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+        legend.position = 'bottom')
+```
+
+The four available options are top, bottom, left, and right. 
+
+Now, suppose the colour palette does not suit your taste, there are multiple options. In this section, we only cover the automatic mapping of the colour elements. There are various palettes available in base-R, and many more from packages. The one I use the most is from the `viridis` package. Let's load it, and theme use the `scale_fill_viridis_d` argument to set the palette to viridis' discrete option (since our colour scheme is based on factors, which are by definition, not continuous):
+
+
+```{r}
+library(viridis)
+
+data %>% 
+  mutate(month = month(month, label = TRUE, abbr = FALSE)) %>% 
+  ggplot(aes(x = month, y = values, fill = variable)) +
+  geom_col() +
+  labs(title = 'Sales by Year',
+       subtitle = '.com bubble',
+       x = 'Month',
+       y = 'Units Sold') +
+  scale_fill_viridis_d()+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+        legend.position = 'bottom')
+
+```
+
+Inside the scale customization, there are a number of things we can do. Firstly, the viridis palette allows for multiple colour schemes. Second, you can define where on that scheme you want to start and end:
+
+```{r}
+library(viridis)
+
+data %>% 
+  mutate(month = month(month, label = TRUE, abbr = FALSE)) %>% 
+  ggplot(aes(x = month, y = values, fill = variable)) +
+  geom_col() +
+  labs(title = 'Sales by Year',
+       subtitle = '.com bubble',
+       x = 'Month',
+       y = 'Units Sold') +
+  scale_fill_viridis_d(option = 'viridis', begin = 0.1, end = 0.9)+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+        legend.position = 'bottom')
+
+```
+
+The option argument allows you to specifiy the palette. Those are listed on the viridis cran page: <https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html>. The begin and end argument are used to specifiy the subset of the palette that is used.
+
+Next, we modify the legend title to reflect our data. Since we have now defined a scale, we can simply use the `name` argument to name it:
+
+```{r}
+library(viridis)
+
+data %>% 
+  mutate(month = month(month, label = TRUE, abbr = FALSE)) %>% 
+  ggplot(aes(x = month, y = values, fill = variable)) +
+  geom_col() +
+  labs(title = 'Sales by Year',
+       subtitle = '.com bubble',
+       x = 'Month',
+       y = 'Units Sold') +
+  scale_fill_viridis_d(name = 'Year', option = 'viridis', begin = 0.1, end = 0.9)+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+        legend.position = 'bottom')
+
 ```
 
 
+Lastly, you can also edit the labels of the legend. There are many different ways to do that. You could change the data itself. However, we will opt for the `label` argument inside the `scale_fill` option:
+
+```{r, warning=FALSE}
+library(viridis)
+
+data %>% 
+  mutate(month = month(month, label = TRUE, abbr = FALSE)) %>% 
+  ggplot(aes(x = month, y = values, fill = variable)) +
+  geom_col() +
+  labs(title = 'Sales by Year',
+       subtitle = '.com bubble',
+       x = 'Month',
+       y = 'Units Sold') +
+  scale_fill_viridis_d(name = 'Year', option = 'viridis', begin = 0.1, end = 0.9, labels = c(1999,2000,2001))+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+        legend.position = 'bottom')
+
+```
+Not that this is the fastest way to achieve the desired result, but not necessarily the best one. If your data might change in the future, for example if more column years are added, or if the order of your factors changes, it might result in an erroneous plot.
+
+
+```{r}
+
+data %>% 
+  mutate(month = month(month, label = TRUE, abbr = FALSE)) %>% 
+  ggplot(aes(x = month, y = values, fill = variable)) +
+  geom_col() +
+  labs(title = 'Sales by Year',
+       subtitle = '.com bubble',
+       x = 'Month',
+       y = 'Units Sold') +
+  scale_fill_viridis_d(name = 'Year', option = 'viridis', begin = 0.1, end = 0.9, labels = c(1999,2000,2001))+
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+        legend.position = 'bottom')
+```
+```{r,warning=FALSE}
+library(ggthemes)
+
+data %>% 
+  mutate(month = month(month, label = TRUE, abbr = FALSE)) %>% 
+  ggplot(aes(x = month, y = values, fill = variable)) +
+  geom_col() +
+  labs(title = 'Sales by Year',
+       subtitle = '.com bubble',
+       x = 'Month',
+       y = 'Units Sold') +
+  scale_fill_viridis_d(name = 'Year', option = 'viridis', begin = 0.1, end = 0.9, labels = c(1999,2000,2001))+
+  theme_gdocs() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+        legend.position = 'bottom')
+```
+
+```{r, warning=FALSE}
+library(hrbrthemes)
+
+data %>% 
+  mutate(month = month(month, label = TRUE, abbr = FALSE)) %>% 
+  ggplot(aes(x = month, y = values, fill = variable)) +
+  geom_col() +
+  labs(title = 'Sales by Year',
+       subtitle = '.com bubble',
+       x = 'Month',
+       y = 'Units Sold') +
+  scale_fill_viridis_d(name = 'Year', option = 'viridis', begin = 0.1, end = 0.9, labels = c(1999,2000,2001))+
+  theme_ipsum_rc() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+        legend.position = 'bottom')
+```
